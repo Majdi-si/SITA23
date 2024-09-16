@@ -1,0 +1,4 @@
+objdump - a [nom du fichier] : format du fichier
+readelf (option) [nom du fichier] : détail du fichier ELF
+ldd [nom du fichier] : dire où se trouve les librarires utilisées par le lecteur
+file [nom du fichier] : informations sur n'importe quel fichier
