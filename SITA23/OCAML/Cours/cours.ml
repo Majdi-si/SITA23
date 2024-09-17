@@ -29,13 +29,14 @@ let rec nb_var = fun e ->
     | Or (e1, e2) -> 1 + nb_var(e1) + nb_var(e2)
     | And (e1, e2) -> 1 + nb_var(e1) + nb_var(e2)
 
-let rec eval = fun e ex ->
+let rec eval = fun e env ->
     match e with
     | False -> false
     | True -> true
-    | Var x -> failwith "Variable not found"
-    | Or (e1, e2) -> (eval e1 ex) || (eval e2 ex)
-    | And (e1, e2) -> (eval e1 ex) && (eval e2 ex)
+    | Var x -> failwith ("Variable " ^ x ^ " not found")
+    | Or (e1, e2) -> eval e1 env || eval e2 env
+    | And (e1, e2) -> eval e1 env && eval e2 env
+
 
 
 
