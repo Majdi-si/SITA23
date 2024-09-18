@@ -23,8 +23,8 @@ int main()
   for (ptc = chaine; ptc < chaine + 3; ptc++){
     printf("adresse = %p   valeur = %c\n", ptc, *ptc);
   }
-  for (ptc = &chaine[0]; ptc < &chaine[0] + sizeof(chaine) / sizeof(int); ptc++) {
-    printf("adresse = %p   valeur = %c\n", ptc, ptc[0]);
+  for (ptc = &chaine[0]; ptc < &chaine[0] + sizeof(chaine) / sizeof(char) -1; ptc++) {
+    printf("adresse = %p   valeur = %c\n", ptc, *ptc);
   }
   return 0 ;
 }
