@@ -20,7 +20,12 @@ int main()
 
   // écrire ici de la même façon que précédemment les deux boucles
   // qui affichent le contenu du tableau "chaine" :
-
+  for (ptc = chaine; ptc < chaine + 3; ptc++){
+    printf("adresse = %p   valeur = %c\n", ptc, *ptc);
+  }
+  for (ptc = &chaine[0]; ptc < &chaine[0] + sizeof(chaine) / sizeof(int); ptc++) {
+    printf("adresse = %p   valeur = %c\n", ptc, ptc[0]);
+  }
   return 0 ;
 }
 
