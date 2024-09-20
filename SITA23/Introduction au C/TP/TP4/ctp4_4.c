@@ -11,7 +11,7 @@ int main()
   /* chaîne de taille initiale 1 caractère */
 
   /* saisie et rangement du texte */
-  printf("ADRESSE DU TEXTE: %p (ATTRIBUEE A L'EXECUTION)", adr_deb);
+  printf("ADRESSE DU TEXTE: %p (ATTRIBUEE A L'EXECUTION)\n", adr_deb);
   printf("ENTRER UN TEXTE ('\\n' pour terminer): ");
 
   while ( (c = getchar()) != '\n' )

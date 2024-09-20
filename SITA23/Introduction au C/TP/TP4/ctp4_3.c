@@ -13,10 +13,10 @@ int main()
   scanf("%d", &x2);
 
   permuter_pasbon(x1, x2);
-  printf("VALEUR POUR x1 = %d   VALEUR POUR x2 = %d \n", x1, x2);
+  printf("Pas bon : VALEUR POUR x1 = %d   VALEUR POUR x2 = %d \n", x1, x2);
 
   permuter_bon(&x1, &x2);
-  printf("VALEUR POUR x1 = %d   VALEUR POUR x2 = %d \n", x1, x2);
+  printf("Bon : VALEUR POUR x1 = %d   VALEUR POUR x2 = %d \n", x1, x2);
 
   return 0 ;
 }
@@ -31,7 +31,14 @@ void permuter_pasbon(int a, int b)
 
 /*************************************************/
 /* écrire ici la définition de la fonction "permuter_bon"
-   qui permet de permuter correctement le contenu des variables 
-   passées en paramètres
+  qui permet de permuter correctement le contenu des variables 
+  passées en paramètres
 */
+
+void permuter_bon(int *a, int *b){
+  int temp;
+  temp = *a;
+  *a = *b;
+  *b = temp;
+}
 

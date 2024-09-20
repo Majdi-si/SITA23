@@ -24,7 +24,7 @@ int main()
     printf("adresse = %p   valeur = %c\n", ptc, *ptc);
   }
   for (ptc = &chaine[0]; ptc < &chaine[0] + sizeof(chaine) / sizeof(char) -1; ptc++) {
-    printf("adresse = %p   valeur = %c\n", ptc, *ptc);
+    printf("adresse = %p   valeur = %c\n", ptc, ptc[0]);
   }
   return 0 ;
 }

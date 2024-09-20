@@ -10,7 +10,7 @@ int main()
   adr1 = &f;
   // adr1 pointeur sur une variable de la pile
   adr2 = (float *) malloc(sizeof(float));
-  // adr2 pointeur vers le tas : allocation obligatoire.
+  // adr2 pointeur vers le tas : allocation obligatallocationoire.
   *adr1 = -5.78;  // f est modifié !!
   *adr2 = 365.89;
   printf("&f   = %p     f = %f\n", &f, f);
@@ -18,6 +18,7 @@ int main()
   printf("adr2 = %p *adr2 = %f\n", adr2, *adr2);
 
   /* ajouter ici la ou les instructions de libération des zones mémoires */
+  free(adr2); // libération de la mémoire allouée dynamiquement
 
   return 0 ;
 }
