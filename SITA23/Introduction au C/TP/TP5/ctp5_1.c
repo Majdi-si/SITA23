@@ -12,9 +12,21 @@ typedef struct {
  // remplacez les pointillés par les bonnes instructions !!!!!!!!
 
 // fonction qui saisit les champs de l'élève au clavier :
-void saisir_eleve(....................);
+void saisir_eleve(eleve *e)
+{
+    printf("Donnez le nom de l'élève : \n");
+    scanf("%s", e->nom);
+    printf("Donnez la note de l'élève : \n");
+    scanf("%f", & e->note);
+    getchar(); // pour vider le buffer d'entrée
+};
+
 // fonction qui affiche les champs de l'élève :
-void afficher_eleve(...................);
+void afficher_eleve(eleve e)
+{
+    printf("Nom : %s\n", e.nom);
+    printf("Note : %f\n", e.note);
+};
 
 int main()
 {
@@ -25,7 +37,7 @@ int main()
     saisir_eleve( & eux[0]);
     saisir_eleve( eux+1);  // idem que : saisir_eleve(& eux[1]);
 
-    afficher_eleve( moi);
+    afficher_eleve(moi);
     afficher_eleve(eux[0]);
     afficher_eleve(eux[1]); // idem que : afficher_eleve( *(eux+1) );
 

@@ -9,13 +9,30 @@ typedef struct {
     float note;
     } eleve;
 
-// les deux mêmes fonctions que précédemment :
-void saisir_eleve(eleve * e);
-void afficher_eleve(eleve e);
+// fonction qui saisit les champs de l'élève au clavier :
+void saisir_eleve(eleve *e)
+{
+    printf("Donnez le nom de l'élève : \n");
+    scanf("%s", e->nom);
+    printf("Donnez la note de l'élève : \n");
+    scanf("%f", & e->note);
+    getchar(); // pour vider le buffer d'entrée
+};
+
+// fonction qui affiche les champs de l'élève :
+void afficher_eleve(eleve e)
+{
+    printf("Nom : %s\n", e.nom);
+    printf("Note : %f\n", e.note);
+};
 // fonction qui réserve en mémoire dynamique un tableau de dim structure eleve :
-void reserver_eleve(int dim,eleve **e );
+void reserver_eleve(int dim,eleve **e ){
+    *e = (eleve *) malloc(dim*sizeof(eleve));
+};
 // fonction qui libère le tableau :
-void liberer_eleve(eleve **e );
+void liberer_eleve(eleve **e ){
+    free(*e);
+};
 
 int main()
 {
