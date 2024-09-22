@@ -16,8 +16,7 @@ val_debut equ 0
 
     org 40                   ; Assurez-vous d'avoir une zone de mémoire suffisante
 
-debut: 
-    ldr r3, [stack_base] ; Initialiser l'adresse de base de la pile dans r3
+debut: ldr r3, [stack_base] ; Initialiser l'adresse de base de la pile dans r3
     ldr r1, [nombre1]      ; multiplication de nombre1 par mult
     ldr r2, [mult]
     call multiplication
@@ -35,11 +34,9 @@ debut:
 
     hlt                    ; Fin du programme
 
-multiplication: 
-    push r4                ; Sauvegarde de r4 dans la pile
+multiplication: push r4                ; Sauvegarde de r4 dans la pile
     ldr r0, 0              ; Initialisation de r0 à 0
-boucle: 
-    add r0, r1r0          ; Ajouter r1 à r0
+boucle: add r0, r1r0          ; Ajouter r1 à r0
     dec r2                ; Décrémenter r2
     jnz boucle            ; Reboucler tant que r2 n'est pas 0
     pop r4                ; Restaurer r4 depuis la pile
