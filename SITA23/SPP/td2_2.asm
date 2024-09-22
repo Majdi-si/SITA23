@@ -14,7 +14,7 @@ val_debut equ 0
 
     org 20
 
-debut: ldr r3, =stack_base ; Initialiser l'adresse de base de la pile dans r3
+debut: ldr r3, [stack_base] ; Initialiser l'adresse de base de la pile dans r3
     ldr r1, [nombre1]      ; multiplication de nombre1 par mult
     ldr r2, [mult]
     call multiplication
@@ -32,7 +32,7 @@ debut: ldr r3, =stack_base ; Initialiser l'adresse de base de la pile dans r3
 
     hlt                    ; Fin du programme
 
-multiplication: str r4, [r3]  ; Sauvegarde manuelle de r4 dans la pile
+multiplication: str [r4], r3  ; Sauvegarde manuelle de r4 dans la pile
     add r3, r3, #4         ; Incrémenter le pointeur de pile
 
     ldr r0, =0             ; Initialisation de r0 à 0
