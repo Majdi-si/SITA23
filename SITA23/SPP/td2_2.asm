@@ -35,3 +35,4 @@ boucle: add r0, r1r0
         jnz boucle   
     pop r4  
     ret
+;en lancant le programme instruction par instruction j'ai : RI = C254, R2 = 0001, R1 = 0004 et R4 = FFFF et dans décodeur : push r4
