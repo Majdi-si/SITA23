@@ -5,7 +5,7 @@ Fichier 'LST' issue du fichier 'ASM' :
 -------------------------------------------------------------------------------------
 | Adresse  |  Code  |  Ligne |       Label          |     Instruction      |  Type  |
 -------------------------------------------------------------------------------------
-|   0000   |  A211  |     3  |                      | jmp debut            | I      |
+|   0000   |  A227  |     3  |                      | jmp debut            | I      |
 |   0001   |  FFFF  |        |                      | FFFF                 | D      |
 |   0002   |  FFFF  |        |                      | FFFF                 | D      |
 |   0003   |  FFFF  |        |                      | FFFF                 | D      |
@@ -23,27 +23,49 @@ Fichier 'LST' issue du fichier 'ASM' :
 |   000F   |  FFFF  |        |                      | FFFF                 | D      |
 |   0010   |  FFFF  |        |                      | FFFF                 | D      |
 |   0011   |  FFFF  |        |                      | FFFF                 | D      |
-|   0012   |  3012  |    18  |           stack_base | ldr r3, [stack_base] | I      |
-|   0013   |  1008  |    19  |                      | ldr r1, [nombre1]    | I      |
-|   0014   |  200B  |    20  |                      | ldr r2, [mult]       | I      |
-|   0015   |  A60A  |    21  |                      | call multiplication  | I      |
-|   0016   |  500C  |    22  |                      | str [resultat1], r0  | I      |
-|   0017   |  1009  |    24  |                      | ldr r1, [nombre2]    | I      |
-|   0018   |  200B  |    25  |                      | ldr r2, [mult]       | I      |
-|   0019   |  A606  |    26  |                      | call multiplication  | I      |
-|   001A   |  500D  |    27  |                      | str [resultat2], r0  | I      |
-|   001B   |  100A  |    29  |                      | ldr r1, [nombre3]    | I      |
-|   001C   |  200B  |    30  |                      | ldr r2, [mult]       | I      |
-|   001D   |  A602  |    31  |                      | call multiplication  | I      |
-|   001E   |  500E  |    32  |                      | str [resultat3], r0  | I      |
-|   001F   |  FEAC  |    34  |                      | hlt                  | I      |
-|   0020   |  C254  |    36  |       multiplication | push r4              | I      |
-|   0021   |  B000  |    37  |                      | ldr r0, 0            | I      |
-|   0022   |  E010  |    38  |               boucle | add r0, r1r0         | I      |
-|   0023   |  FE22  |    39  |                      | dec r2               | I      |
-|   0024   |  ACFD  |    40  |                      | jnz boucle           | I      |
-|   0025   |  C054  |    41  |                      | pop r4               | I      |
-|   0026   |  C057  |    42  |                      | ret                  | I      |
+|   0012   |  FFFF  |        |                      | FFFF                 | D      |
+|   0013   |  FFFF  |        |                      | FFFF                 | D      |
+|   0014   |  FFFF  |        |                      | FFFF                 | D      |
+|   0015   |  FFFF  |        |                      | FFFF                 | D      |
+|   0016   |  FFFF  |        |                      | FFFF                 | D      |
+|   0017   |  FFFF  |        |                      | FFFF                 | D      |
+|   0018   |  FFFF  |        |                      | FFFF                 | D      |
+|   0019   |  FFFF  |        |                      | FFFF                 | D      |
+|   001A   |  FFFF  |        |                      | FFFF                 | D      |
+|   001B   |  FFFF  |        |                      | FFFF                 | D      |
+|   001C   |  FFFF  |        |                      | FFFF                 | D      |
+|   001D   |  FFFF  |        |                      | FFFF                 | D      |
+|   001E   |  FFFF  |        |           stack_base | FFFF                 | D      |
+|   001F   |  FFFF  |        |                      | FFFF                 | D      |
+|   0020   |  FFFF  |        |                      | FFFF                 | D      |
+|   0021   |  FFFF  |        |                      | FFFF                 | D      |
+|   0022   |  FFFF  |        |                      | FFFF                 | D      |
+|   0023   |  FFFF  |        |                      | FFFF                 | D      |
+|   0024   |  FFFF  |        |                      | FFFF                 | D      |
+|   0025   |  FFFF  |        |                      | FFFF                 | D      |
+|   0026   |  FFFF  |        |                      | FFFF                 | D      |
+|   0027   |  FFFF  |        |                      | FFFF                 | D      |
+|   0028   |  301E  |    17  |                debut | ldr r3, [stack_base] | I      |
+|   0029   |  1008  |    18  |                      | ldr r1, [nombre1]    | I      |
+|   002A   |  200B  |    19  |                      | ldr r2, [mult]       | I      |
+|   002B   |  A60A  |    20  |                      | call multiplication  | I      |
+|   002C   |  500C  |    21  |                      | str [resultat1], r0  | I      |
+|   002D   |  1009  |    23  |                      | ldr r1, [nombre2]    | I      |
+|   002E   |  200B  |    24  |                      | ldr r2, [mult]       | I      |
+|   002F   |  A606  |    25  |                      | call multiplication  | I      |
+|   0030   |  500D  |    26  |                      | str [resultat2], r0  | I      |
+|   0031   |  100A  |    28  |                      | ldr r1, [nombre3]    | I      |
+|   0032   |  200B  |    29  |                      | ldr r2, [mult]       | I      |
+|   0033   |  A602  |    30  |                      | call multiplication  | I      |
+|   0034   |  500E  |    31  |                      | str [resultat3], r0  | I      |
+|   0035   |  FEAC  |    33  |                      | hlt                  | I      |
+|   0036   |  C254  |    35  |       multiplication | push r4              | I      |
+|   0037   |  B000  |    36  |                      | ldr r0, 0            | I      |
+|   0038   |  E010  |    37  |               boucle | add r0, r1r0         | I      |
+|   0039   |  FE22  |    38  |                      | dec r2               | I      |
+|   003A   |  ACFD  |    39  |                      | jnz boucle           | I      |
+|   003B   |  C054  |    40  |                      | pop r4               | I      |
+|   003C   |  C057  |    41  |                      | ret                  | I      |
 -------------------------------------------------------------------------------------
 
 Table des Etiquettes :
@@ -55,10 +77,10 @@ mult                 --> 0x000B
 resultat1            --> 0x000C
 resultat2            --> 0x000D
 resultat3            --> 0x000E
-stack_base           --> 0x0012
-debut                --> 0x0012
-multiplication       --> 0x0020
-boucle               --> 0x0022
+stack_base           --> 0x001E
+debut                --> 0x0028
+multiplication       --> 0x0036
+boucle               --> 0x0038
 
 Table des Symboles :
 --------------------
@@ -68,7 +90,7 @@ Informations de creation issues de la compilation :
 ----------------------------------------------------
 IP_Address                 :10.1.105.162
 Host_Name                  :Majdikali
-TAG_UID pour fichier 'asm' :0c2e293cdcff95c1b3c6ae608163eb0aeb7525d395a3e2ee7ca203fbc7e00a43--date :Mon, 23 Sep 2024 00:24:36.6567926--taille :1219
-TAG_UID pour fichier 'sim' :d2d8a0516824ba52df23b98b3a88bbeaca9dcc94ab7009c41fef2a9124f7c014--date :Mon, 23 Sep 2024 00:26:02.3781068--taille :194
-TAG_UID pour fichier 'lst' :9deeb79c4c2252b6932e89c56c4edc0c0db7df7b147c4720ff1b31a5d8f63673--date :Mon, 23 Sep 2024 00:26:02.3781068--taille :4265
+TAG_UID pour fichier 'asm' :e0bc0f4cd88a4110d44db207090d314d9eedc46a3925877f99c0b40e2ffbb4eb--date :Mon, 23 Sep 2024 00:29:01.828858--taille :1228
+TAG_UID pour fichier 'sim' :299bff33d006d57b0439d76b9e45ce07c477e1e59d6e182add8ab70c0d883eb5--date :Mon, 23 Sep 2024 00:29:07.8769505--taille :304
+TAG_UID pour fichier 'lst' :509977710fc18a3aeac714845952d7fc6a6951c68a6b16c5bcdd6fd9e13d5209--date :Mon, 23 Sep 2024 00:29:07.8769505--taille :6157
 ----------------------------------------------------
