@@ -11,7 +11,7 @@ val_debut equ 0
     resultat2: var 1?
     resultat3: var 1?
 
-    org 16
+    org 18
     stack_base: var 0?      ; Simuler la pile avec une adresse de base (ajoutez une ligne pour la pile)
 
 
