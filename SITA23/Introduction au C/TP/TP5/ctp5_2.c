@@ -13,7 +13,8 @@ typedef struct {
 void saisir_eleve(eleve *e)
 {
     printf("Donnez le nom de l'élève : \n");
-    scanf("%s", e->nom);
+    //je veux prendre en compte les espaces dans le nom
+    scanf("%[^\n]", e->nom);
     printf("Donnez la note de l'élève : \n");
     scanf("%f", & e->note);
     getchar(); // pour vider le buffer d'entrée

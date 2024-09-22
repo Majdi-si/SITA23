@@ -1,0 +1,74 @@
+
+Fichier 'LST' issue du fichier 'ASM' : 
+/home/majdikali/Desktop/ENAC/SITA23/SITA23/SPP/td2_2.asm
+
+-------------------------------------------------------------------------------------
+| Adresse  |  Code  |  Ligne |       Label          |     Instruction      |  Type  |
+-------------------------------------------------------------------------------------
+|   0000   |  A213  |     3  |                      | jmp debut            | I      |
+|   0001   |  FFFF  |        |                      | FFFF                 | D      |
+|   0002   |  FFFF  |        |                      | FFFF                 | D      |
+|   0003   |  FFFF  |        |                      | FFFF                 | D      |
+|   0004   |  FFFF  |        |                      | FFFF                 | D      |
+|   0005   |  FFFF  |        |                      | FFFF                 | D      |
+|   0006   |  FFFF  |        |                      | FFFF                 | D      |
+|   0007   |  FFFF  |        |                      | FFFF                 | D      |
+|   0008   |  0001  |        |              nombre1 | 0001                 | D      |
+|   0009   |  0002  |        |              nombre2 | 0002                 | D      |
+|   000A   |  0003  |        |              nombre3 | 0003                 | D      |
+|   000B   |  0004  |        |                 mult | 0004                 | D      |
+|   000C   |  FFFF  |        |            resultat1 | FFFF                 | D      |
+|   000D   |  FFFF  |        |            resultat2 | FFFF                 | D      |
+|   000E   |  FFFF  |        |            resultat3 | FFFF                 | D      |
+|   000F   |  FFFF  |        |                      | FFFF                 | D      |
+|   0010   |  FFFF  |        |                      | FFFF                 | D      |
+|   0011   |  FFFF  |        |                      | FFFF                 | D      |
+|   0012   |  FFFF  |        |                      | FFFF                 | D      |
+|   0013   |  FFFF  |        |                      | FFFF                 | D      |
+|   0014   |  1008  |    16  |                debut | ldr r1, [nombre1]    | I      |
+|   0015   |  200B  |    17  |                      | ldr r2, [mult]       | I      |
+|   0016   |  A60A  |    18  |                      | call multiplication  | I      |
+|   0017   |  500C  |    19  |                      | str [resultat1], r0  | I      |
+|   0018   |  1009  |    21  |                      | ldr r1, [nombre2]    | I      |
+|   0019   |  200B  |    22  |                      | ldr r2, [mult]       | I      |
+|   001A   |  A606  |    23  |                      | call multiplication  | I      |
+|   001B   |  500D  |    24  |                      | str [resultat2], r0  | I      |
+|   001C   |  100A  |    26  |                      | ldr r1, [nombre3]    | I      |
+|   001D   |  200B  |    27  |                      | ldr r2, [mult]       | I      |
+|   001E   |  A602  |    28  |                      | call multiplication  | I      |
+|   001F   |  500E  |    29  |                      | str [resultat3], r0  | I      |
+|   0020   |  FEAC  |    30  |                      | hlt                  | I      |
+|   0021   |  C254  |    32  |       multiplication | push r4              | I      |
+|   0022   |  B000  |    33  |                      | ldr r0, 0            | I      |
+|   0023   |  E010  |    34  |               boucle | add r0, r1r0         | I      |
+|   0024   |  FE22  |    35  |                      | dec r2               | I      |
+|   0025   |  ACFD  |    36  |                      | jnz boucle           | I      |
+|   0026   |  C054  |    37  |                      | pop r4               | I      |
+|   0027   |  C057  |    38  |                      | ret                  | I      |
+-------------------------------------------------------------------------------------
+
+Table des Etiquettes :
+----------------------
+nombre1              --> 0x0008
+nombre2              --> 0x0009
+nombre3              --> 0x000A
+mult                 --> 0x000B
+resultat1            --> 0x000C
+resultat2            --> 0x000D
+resultat3            --> 0x000E
+debut                --> 0x0014
+multiplication       --> 0x0021
+boucle               --> 0x0023
+
+Table des Symboles :
+--------------------
+val_debut            --> 0
+
+Informations de creation issues de la compilation :
+----------------------------------------------------
+IP_Address                 :10.1.105.162
+Host_Name                  :Majdikali
+TAG_UID pour fichier 'asm' :1efcdbe3cfaaac8fdb273cdca73ac5e6d35d9c12d0e707170fa8a75ec4d7f047--date :Sun, 22 Sep 2024 23:04:35.9737492--taille :717
+TAG_UID pour fichier 'sim' :923043cb71e7c0f7e72a6a04f82a42ca6326f8b749891c65711c9dc556cb112b--date :Sun, 22 Sep 2024 23:05:02.0937474--taille :199
+TAG_UID pour fichier 'lst' :60f01af637b4a5afa7c7d87ccff86b87f4efeab6a9955b4caf659b162aa5b139--date :Sun, 22 Sep 2024 23:05:02.0977473--taille :4319
+----------------------------------------------------

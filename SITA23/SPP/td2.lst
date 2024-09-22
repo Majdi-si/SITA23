@@ -1,0 +1,58 @@
+
+Fichier 'LST' issue du fichier 'ASM' : 
+/home/majdikali/Desktop/ENAC/SITA23/SITA23/SPP/td2.asm
+
+-------------------------------------------------------------------------------------
+| Adresse  |  Code  |  Ligne |       Label          |     Instruction      |  Type  |
+-------------------------------------------------------------------------------------
+|   0000   |  A213  |     3  |                      | jmp debut            | I      |
+|   0001   |  FFFF  |        |                      | FFFF                 | D      |
+|   0002   |  FFFF  |        |                      | FFFF                 | D      |
+|   0003   |  FFFF  |        |                      | FFFF                 | D      |
+|   0004   |  FFFF  |        |                      | FFFF                 | D      |
+|   0005   |  FFFF  |        |                      | FFFF                 | D      |
+|   0006   |  FFFF  |        |                      | FFFF                 | D      |
+|   0007   |  FFFF  |        |                      | FFFF                 | D      |
+|   0008   |  0003  |        |               nombre | 0003                 | D      |
+|   0009   |  0004  |        |                 mult | 0004                 | D      |
+|   000A   |  FFFF  |        |             resultat | FFFF                 | D      |
+|   000B   |  FFFF  |        |                      | FFFF                 | D      |
+|   000C   |  FFFF  |        |                      | FFFF                 | D      |
+|   000D   |  FFFF  |        |                      | FFFF                 | D      |
+|   000E   |  FFFF  |        |                      | FFFF                 | D      |
+|   000F   |  FFFF  |        |                      | FFFF                 | D      |
+|   0010   |  FFFF  |        |                      | FFFF                 | D      |
+|   0011   |  FFFF  |        |                      | FFFF                 | D      |
+|   0012   |  FFFF  |        |                      | FFFF                 | D      |
+|   0013   |  FFFF  |        |                      | FFFF                 | D      |
+|   0014   |  B000  |    12  |                debut | ldr r0, 0            | I      |
+|   0015   |  1008  |    13  |                      | ldr r1, [nombre]     | I      |
+|   0016   |  2009  |    14  |                      | ldr r2, [mult]       | I      |
+|   0017   |  E010  |    15  |               boucle | add r0, r1r0         | I      |
+|   0018   |  FE22  |    17  |                      | dec r2               | I      |
+|   0019   |  ACFD  |    19  |                      | jnz boucle           | I      |
+|   001A   |  500A  |    21  |                      | str [resultat], r0   | I      |
+|   001B   |  FEAC  |    23  |                  fin | hlt                  | I      |
+-------------------------------------------------------------------------------------
+
+Table des Etiquettes :
+----------------------
+nombre               --> 0x0008
+mult                 --> 0x0009
+resultat             --> 0x000A
+debut                --> 0x0014
+boucle               --> 0x0017
+fin                  --> 0x001B
+
+Table des Symboles :
+--------------------
+val_debut            --> 0
+
+Informations de creation issues de la compilation :
+----------------------------------------------------
+IP_Address                 :10.1.126.211
+Host_Name                  :Majdikali
+TAG_UID pour fichier 'asm' :20656f4d6b6daaa62f81c16a5bbc67740f1fdd0d5aab8776f9027c225b3da64e--date :Sun, 22 Sep 2024 16:20:11.9760804--taille :692
+TAG_UID pour fichier 'sim' :c4dfa2778f8fb9e9d771bebff6eaa84685cacb5ca01812dcdbc00eda3f7b5c2c--date :Sun, 22 Sep 2024 16:46:28.3017812--taille :139
+TAG_UID pour fichier 'lst' :48ea432e83be65b2710aa734cc7814f685fb09aa4f6bcf1d96f3094ba9f11731--date :Sun, 22 Sep 2024 16:46:28.3057811--taille :3157
+----------------------------------------------------

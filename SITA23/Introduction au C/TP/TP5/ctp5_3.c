@@ -74,22 +74,18 @@ int saisir_chaine(char * *ch)
 };
 /****************************/
 void traitement(int n, char* mot1, char* mot2, char** resultat) {
-    // Calculer la taille nécessaire pour le résultat
     int taille_mot1 = strlen(mot1);
     int taille_mot2 = strlen(mot2);
-    int taille_resultat = n * (taille_mot1 + taille_mot2 + 1) + 1; // +1 pour l'espace et +1 pour le '\0'
+    int taille_resultat = n * (taille_mot1 + taille_mot2 + 1) + 1;
 
-    // Allouer la mémoire pour le résultat
     *resultat = (char*)malloc(taille_resultat * sizeof(char));
     if (*resultat == NULL) {
         fprintf(stderr, "Erreur d'allocation mémoire\n");
         exit(EXIT_FAILURE);
     }
 
-    // Initialiser la chaîne résultat
     (*resultat)[0] = '\0';
 
-    // Construire la chaîne résultat
     for (int i = 0; i < n; i++) {
         strcat(*resultat, mot1);
         strcat(*resultat, " ");
