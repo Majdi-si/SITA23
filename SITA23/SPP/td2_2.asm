@@ -11,9 +11,9 @@ val_debut equ 0
     resultat2: var 1?
     resultat3: var 1?
 
-    org 30
+    org 20
     stack_base: var 0?      ; Simuler la pile avec une adresse de base (ajoutez une ligne pour la pile)
-    org 40
+    org 30
 debut: ldr r3, [stack_base] ; Initialiser l'adresse de base de la pile dans r3
     ldr r1, [nombre1]      ; multiplication de nombre1 par mult
     ldr r2, [mult]
