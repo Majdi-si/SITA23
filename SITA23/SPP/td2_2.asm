@@ -10,7 +10,7 @@ val_debut equ 0
     resultat1: var 1?
     resultat2: var 1?
     resultat3: var 1?
-    stack_base: var 0      ; Simuler la pile avec une adresse de base
+    stack_base: var 0?      ; Simuler la pile avec une adresse de base
 
     org 20
 
