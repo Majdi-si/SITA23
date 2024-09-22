@@ -15,7 +15,8 @@ stack_base: cst 0x1000
 stack_pointer: var 0? ; Le pointeur de pile commence à 0 (sera initialisé plus tard)
 
 org 20
-debut: ldr sp, [stack_base]
+debut: ldr r3, =stack_base  ; Charger l'adresse de base de la pile dans r3
+
 
 ; Multiplication de nombre1 par mult
 ldr r1, [nombre1]
