@@ -43,7 +43,7 @@ str r4, [r3] ; Stocke r4 à l'adresse de la pile
 add r3, r3, #1 ; Incrémente le pointeur de pile
 str r3, [stack_pointer] ; Met à jour le pointeur de pile
 
-mov r0, #0 ; Initialisation du résultat à 0
+ldr r0, =0 ; Initialisation du résultat à 0
 boucle: add r0, r0, r1 ; Ajout de r1 à r0 (addition répétée)
 dec r2 ; Décrémentation du multiplicateur
 jnz boucle ; Si r2 n'est pas zéro, continue la boucle
