@@ -12,7 +12,7 @@ resultat3: var 1?
 
 ; Pile simulée avec une adresse de base
 stack_base: cst 0x1000
-stack_pointer: var 0x1000? ; Initialisation manuelle du pointeur de pile
+stack_pointer: var 0? ; Le pointeur de pile commence à 0 (sera initialisé plus tard)
 
 org 20
 debut: ldr sp, [stack_base]
