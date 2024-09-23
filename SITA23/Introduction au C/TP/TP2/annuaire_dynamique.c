@@ -1,16 +1,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h> 
+#include <ctype.h>
 
-#define NB_MAX 500
+#define NB_MAX 100
 
 typedef struct {
 	char nom[20];
 	char prenom[20];
 	char tel[12];
 	} personne;
-	
+
 /* fonction affichant les options offertes par le menu � l'utilisateur */
 void afficherMenu();
 
@@ -97,22 +97,22 @@ char* majuscule(char *chaine){
 
 int main()
 {
-    personne tab[NB_MAX];  // tableau contenant toutes les personnes
+    personne*  tab=NULL;  // tableau dynamiques
     int index=0; // nombre de personnes r�elles dans le tableau
-    
+
     char rep;
     do {
         afficherMenu();
         rep=toupper(getchar());
         getchar();   //pour lire le caractere de passage � la ligne
         switch(rep) {
-            case 'A' : saisirPersonne(&index,tab);break; //passage par adresse car modification de index ds la fonction
-            case 'S' : supprimerPersonne(&index,tab);break;
-            case 'V' : editerAnnuaire(&index,tab);break;
+            case 'A' : saisirPersonne(&index,&tab);break; //passage par adresse car modification de index ds la fonction et allocation de chaque nouvelle structure personne
+            case 'S' : supprimerPersonne(&index,&tab);break;  // r�duction du tableau par r�duction m�moire de la structure personne concern�e
+            case 'V' : editerAnnuaire(index,tab);break;
             case 'Q' : break;
 		}
     }while (rep != 'Q');
-    
+
     return 0;
 }
 
