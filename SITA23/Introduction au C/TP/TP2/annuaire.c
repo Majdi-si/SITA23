@@ -14,6 +14,8 @@ typedef struct {
 /* fonction affichant les options offertes par le menu � l'utilisateur */
 void afficherMenu();
 
+char* majuscule(char *chaine);
+
 void saisirPersonne(int *index, personne tab[]) {
     if (*index >= NB_MAX) {
         printf("Annuaire plein.\n");
@@ -22,9 +24,11 @@ void saisirPersonne(int *index, personne tab[]) {
 
     printf("Nom : ");
     fgets(tab[*index].nom, 20, stdin);
+    majuscule(tab[*index].nom);
 
     printf("Prenom : ");
     fgets(tab[*index].prenom, 20, stdin);
+    majuscule(tab[*index].prenom);
 
     printf("Telephone : ");
     fgets(tab[*index].tel, 12, stdin);
@@ -36,7 +40,7 @@ void supprimerPersonne(int *index, personne tab[]) {
     char nom[20];
     printf("Nom de la personne à supprimer : ");
     fgets(nom, 20, stdin);
-    printf("Nom saisi : %s\n", nom);
+    majuscule(nom);
 
     for (int i = 0; i < *index; i++) {
         printf("Nom dans le tableau : %s\n", tab[i].nom);
@@ -64,7 +68,14 @@ void editerAnnuaire(int *index, personne tab[]){
     }
 }
 
-char 
+char* majuscule(char *chaine){
+    int i = 0;
+    int length = strlen(chaine);
+    for(i = 0; i<length; i++){
+        chaine[i] = toupper(chaine[i]);
+    }
+    return chaine;
+};
 
 int main()
 {
