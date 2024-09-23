@@ -64,6 +64,7 @@ void editerAnnuaire(int *index, personne tab[]){
     }
 }
 
+char 
 
 int main()
 {
