@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ctp6_2.h"
+#include <string.h>
 
 #define TAILLEMAX 300
 
@@ -30,7 +31,9 @@ int main(int argc,char * argv[])
     }
     printf("TAPER UNE CHAINE DE CARACTERES : ('\\n' POUR FINIR) ");
     saisir_chaine(&chaine);
+    printf("\n");
     ecrire_fichier(nomfic,chaine);
+    printf("CONTENU DU FICHIER %s :\n",nomfic);
     afficher_fichier(nomfic);
     free(chaine);
     chaine=NULL;
