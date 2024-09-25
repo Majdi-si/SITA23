@@ -33,7 +33,7 @@ let rec eval = fun e env ->
     match e with
     | False -> false
     | True -> true
-    | Var x -> (try List.assoc x env with Not_found -> failwith ("Variable " ^ x ^ " not found"))
+    | Var x -> eval (List.assoc x env) env
     | Or (e1, e2) -> eval e1 env || eval e2 env
     | And (e1, e2) -> eval e1 env && eval e2 env
 
@@ -45,6 +45,6 @@ let () =
     Printf.printf "nb_nodes(expr1) = %d\n" (nb_nodes expr1);
     Printf.printf "depth(expr1) = %d\n" (depth expr1);
     Printf.printf "nb_var(expr1) = %d\n" (nb_var expr1);
-    Printf.printf "eval(expr1, {x=true, y=false, z=true}) = %b\n" (eval expr1 [("x", true); ("y", false); ("z", true)]);
-    Printf.printf "eval(expr1, {x=true, y=false, z=false}) = %b\n" (eval expr1 [("x", true); ("y", false); ("z", false)]);
+    Printf.printf "eval(expr1, {x=true, y=false, z=true}) = %b\n" (eval expr1 [("x", True); ("y", False); ("z", True)]);
+    Printf.printf "eval(expr1, {x=true, y=false, z=false}) = %b\n" (eval expr1 [("x", True); ("y", False); ("z", False)]);
     
