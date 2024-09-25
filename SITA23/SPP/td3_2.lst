@@ -1,0 +1,77 @@
+
+Fichier 'LST' issue du fichier 'ASM' : 
+/home/majdikali/Desktop/ENAC/SITA23/SITA23/SPP/td3_2.asm
+
+-------------------------------------------------------------------------------------
+| Adresse  |  Code  |  Ligne |       Label          |     Instruction      |  Type  |
+-------------------------------------------------------------------------------------
+|   0000   |  A21D  |     9  |                      | jmp init             | I      |
+|   0001   |  FFFF  |        |                      | FFFF                 | D      |
+|   0002   |  FFFF  |        |                      | FFFF                 | D      |
+|   0003   |  FFFF  |        |                      | FFFF                 | D      |
+|   0004   |  FFFF  |        |                      | FFFF                 | D      |
+|   0005   |  FFFF  |        |                      | FFFF                 | D      |
+|   0006   |  FFFF  |        |                      | FFFF                 | D      |
+|   0007   |  FFFF  |        |                      | FFFF                 | D      |
+|   0008   |  FFFF  |        |                      | FFFF                 | D      |
+|   0009   |  FFFF  |        |                      | FFFF                 | D      |
+|   000A   |  0053  |        |              message | 0053                 | D      |
+|   000B   |  0049  |        |                      | 0049                 | D      |
+|   000C   |  004D  |        |                      | 004D                 | D      |
+|   000D   |  0043  |        |                      | 0043                 | D      |
+|   000E   |  0041  |        |                      | 0041                 | D      |
+|   000F   |  004C  |        |                      | 004C                 | D      |
+|   0010   |  0020  |        |                      | 0020                 | D      |
+|   0011   |  0049  |        |                      | 0049                 | D      |
+|   0012   |  0045  |        |                      | 0045                 | D      |
+|   0013   |  004E  |        |                      | 004E                 | D      |
+|   0014   |  0041  |        |                      | 0041                 | D      |
+|   0015   |  0043  |        |                      | 0043                 | D      |
+|   0016   |  002D  |        |                      | 002D                 | D      |
+|   0017   |  000E  |        |               taille | 000E                 | D      |
+|   0018   |  FFFF  |        |                      | FFFF                 | D      |
+|   0019   |  FFFF  |        |                      | FFFF                 | D      |
+|   001A   |  FFFF  |        |                      | FFFF                 | D      |
+|   001B   |  FFFF  |        |                      | FFFF                 | D      |
+|   001C   |  FFFF  |        |                      | FFFF                 | D      |
+|   001D   |  FFFF  |        |                      | FFFF                 | D      |
+|   001E   |  B002  |    19  |                 init | ldr r0, 2            | I      |
+|   001F   |  5FF5  |    20  |                      | str [SModeEtat], r0  | I      |
+|   0020   |  B00A  |    21  |                      | ldr r0, message      | I      |
+|   0021   |  D040  |    22  |                      | ldr r4, r0           | I      |
+|   0022   |  B017  |    23  |                      | ldr r0, taille       | I      |
+|   0023   |  D020  |    24  |                      | ldr r2, r0           | I      |
+|   0024   |  0FF5  |    26  |                debut | ldr r0, [SModeEtat]  | I      |
+|   0025   |  D010  |    27  |                      | ldr r1,r0            | I      |
+|   0026   |  B002  |    28  |                      | ldr r0, 2            | I      |
+|   0027   |  F010  |    29  |                      | and r0, r1r0         | I      |
+|   0028   |  AEFB  |    30  |                      | jz debut             | I      |
+|   0029   |  C040  |    32  |            affichage | ldr r0, [r4]         | I      |
+|   002A   |  5FF4  |    33  |                      | str [SRxTx], r0      | I      |
+|   002B   |  FE14  |    34  |                      | inc r4               | I      |
+|   002C   |  FE23  |    35  |                      | dec r3               | I      |
+|   002D   |  ACF6  |    36  |                      | jnz debut            | I      |
+|   002E   |  A1EF  |    37  |                      | jmp init             | I      |
+-------------------------------------------------------------------------------------
+
+Table des Etiquettes :
+----------------------
+message              --> 0x000A
+taille               --> 0x0017
+init                 --> 0x001E
+debut                --> 0x0024
+affichage            --> 0x0029
+
+Table des Symboles :
+--------------------
+SModeEtat            --> 0xFF5
+SRxTx                --> 0xFF4
+
+Informations de creation issues de la compilation :
+----------------------------------------------------
+IP_Address                 :10.1.122.63
+Host_Name                  :Majdikali
+TAG_UID pour fichier 'asm' :a405789637f9657a15fe84b69a6d633bc138c24c0edc94a50e562a21e26bc35b--date :Wed, 25 Sep 2024 09:53:09.924973--taille :523
+TAG_UID pour fichier 'sim' :d6fbbb3ca4c86f16da089b09af10fdad9ffc65d5ea8754a98386aee53c3e4613--date :Wed, 25 Sep 2024 09:53:14.2130237--taille :234
+TAG_UID pour fichier 'lst' :175f7d1043169003e7e4dd73f94fe537e735bedc0918bb5b09eabac6bc9fd396--date :Wed, 25 Sep 2024 09:53:14.2130237--taille :4796
+----------------------------------------------------

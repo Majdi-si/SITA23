@@ -15,9 +15,9 @@ let rec nb_nodes = fun e ->
 
 let rec depth = fun e -> 
     match e with 
-    | False -> 1
-    | True -> 1
-    | Var _ -> 1
+    | False -> 0
+    | True -> 0
+    | Var _ -> 0
     | Or (e1, e2) -> 1 + max (depth e1) (depth e2)
     | And (e1, e2) -> 1 + max (depth e1) (depth e2)
 
