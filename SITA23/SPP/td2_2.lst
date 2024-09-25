@@ -5,7 +5,7 @@ Fichier 'LST' issue du fichier 'ASM' :
 -------------------------------------------------------------------------------------
 | Adresse  |  Code  |  Ligne |       Label          |     Instruction      |  Type  |
 -------------------------------------------------------------------------------------
-|   0000   |  A21D  |     3  |                      | jmp debut            | I      |
+|   0000   |  A225  |    47  |                      | jmp debut            | I      |
 |   0001   |  FFFF  |        |                      | FFFF                 | D      |
 |   0002   |  FFFF  |        |                      | FFFF                 | D      |
 |   0003   |  FFFF  |        |                      | FFFF                 | D      |
@@ -13,74 +13,77 @@ Fichier 'LST' issue du fichier 'ASM' :
 |   0005   |  FFFF  |        |                      | FFFF                 | D      |
 |   0006   |  FFFF  |        |                      | FFFF                 | D      |
 |   0007   |  FFFF  |        |                      | FFFF                 | D      |
-|   0008   |  0001  |        |              nombre1 | 0001                 | D      |
-|   0009   |  0002  |        |              nombre2 | 0002                 | D      |
-|   000A   |  0003  |        |              nombre3 | 0003                 | D      |
-|   000B   |  0004  |        |                 mult | 0004                 | D      |
-|   000C   |  FFFF  |        |            resultat1 | FFFF                 | D      |
-|   000D   |  FFFF  |        |            resultat2 | FFFF                 | D      |
-|   000E   |  FFFF  |        |            resultat3 | FFFF                 | D      |
-|   000F   |  FFFF  |        |                      | FFFF                 | D      |
-|   0010   |  FFFF  |        |                      | FFFF                 | D      |
+|   0008   |  FFFF  |        |                      | FFFF                 | D      |
+|   0009   |  FFFF  |        |                      | FFFF                 | D      |
+|   000A   |  0004  |        |                 mult | 0004                 | D      |
+|   000B   |  0001  |        |              nombre1 | 0001                 | D      |
+|   000C   |  0002  |        |              nombre2 | 0002                 | D      |
+|   000D   |  0003  |        |              nombre3 | 0003                 | D      |
+|   000E   |  FFFF  |        |            resultat1 | FFFF                 | D      |
+|   000F   |  FFFF  |        |            resultat2 | FFFF                 | D      |
+|   0010   |  FFFF  |        |            resultat3 | FFFF                 | D      |
 |   0011   |  FFFF  |        |                      | FFFF                 | D      |
 |   0012   |  FFFF  |        |                      | FFFF                 | D      |
 |   0013   |  FFFF  |        |                      | FFFF                 | D      |
-|   0014   |  FFFF  |        |           stack_base | FFFF                 | D      |
+|   0014   |  FFFF  |        |                 pile | FFFF                 | D      |
 |   0015   |  FFFF  |        |                      | FFFF                 | D      |
 |   0016   |  FFFF  |        |                      | FFFF                 | D      |
 |   0017   |  FFFF  |        |                      | FFFF                 | D      |
 |   0018   |  FFFF  |        |                      | FFFF                 | D      |
-|   0019   |  FFFF  |        |                      | FFFF                 | D      |
+|   0019   |  FFFF  |        |            fond_pile | FFFF                 | D      |
 |   001A   |  FFFF  |        |                      | FFFF                 | D      |
 |   001B   |  FFFF  |        |                      | FFFF                 | D      |
 |   001C   |  FFFF  |        |                      | FFFF                 | D      |
 |   001D   |  FFFF  |        |                      | FFFF                 | D      |
-|   001E   |  3014  |    17  |                debut | ldr r3, [stack_base] | I      |
-|   001F   |  1008  |    18  |                      | ldr r1, [nombre1]    | I      |
-|   0020   |  200B  |    19  |                      | ldr r2, [mult]       | I      |
-|   0021   |  A60A  |    20  |                      | call multiplication  | I      |
-|   0022   |  500C  |    21  |                      | str [resultat1], r0  | I      |
-|   0023   |  1009  |    23  |                      | ldr r1, [nombre2]    | I      |
-|   0024   |  200B  |    24  |                      | ldr r2, [mult]       | I      |
-|   0025   |  A606  |    25  |                      | call multiplication  | I      |
-|   0026   |  500D  |    26  |                      | str [resultat2], r0  | I      |
-|   0027   |  100A  |    28  |                      | ldr r1, [nombre3]    | I      |
-|   0028   |  200B  |    29  |                      | ldr r2, [mult]       | I      |
-|   0029   |  A602  |    30  |                      | call multiplication  | I      |
-|   002A   |  500E  |    31  |                      | str [resultat3], r0  | I      |
-|   002B   |  FEAC  |    33  |                      | hlt                  | I      |
-|   002C   |  C254  |    35  |       multiplication | push r4              | I      |
-|   002D   |  B000  |    36  |                      | ldr r0, 0            | I      |
-|   002E   |  E010  |    37  |               boucle | add r0, r1r0         | I      |
-|   002F   |  FE22  |    38  |                      | dec r2               | I      |
-|   0030   |  ACFD  |    39  |                      | jnz boucle           | I      |
-|   0031   |  C054  |    40  |                      | pop r4               | I      |
-|   0032   |  C057  |    41  |                      | ret                  | I      |
+|   001E   |  C252  |    60  |                SousP | push r2              | I      |
+|   001F   |  C255  |    61  |                      | push fl              | I      |
+|   0020   |  E010  |    62  |                 bcle | add r0,r1r0          | I      |
+|   0021   |  FE22  |    63  |                      | dec r2               | I      |
+|   0022   |  ACFD  |    64  |                      | jnz bcle             | I      |
+|   0023   |  C055  |    65  |                      | pop fl               | I      |
+|   0024   |  C052  |    66  |                      | pop r2               | I      |
+|   0025   |  C057  |    67  |                      | ret                  | I      |
+|   0026   |  B019  |    68  |                debut | ldr r0,fond_pile     | I      |
+|   0027   |  D060  |    69  |                      | ldr sp,r0            | I      |
+|   0028   |  200A  |    70  |                      | ldr r2,[mult]        | I      |
+|   0029   |  100B  |    71  |                      | ldr r1,[nombre1]     | I      |
+|   002A   |  B000  |    72  |                      | ldr r0,0             | I      |
+|   002B   |  A5F2  |    73  |                      | call SousP           | I      |
+|   002C   |  500E  |    74  |                      | str [resultat1],r0   | I      |
+|   002D   |  B000  |    75  |                      | ldr r0,0             | I      |
+|   002E   |  100C  |    76  |                      | ldr r1,[nombre2]     | I      |
+|   002F   |  A5EE  |    77  |                      | call SousP           | I      |
+|   0030   |  500F  |    78  |                      | str [resultat2],r0   | I      |
+|   0031   |  100D  |    79  |                      | ldr r1,[nombre3]     | I      |
+|   0032   |  B000  |    80  |                      | ldr r0,0             | I      |
+|   0033   |  A5EA  |    81  |                      | call SousP           | I      |
+|   0034   |  5010  |    82  |                      | str [resultat3],r0   | I      |
 -------------------------------------------------------------------------------------
 
 Table des Etiquettes :
 ----------------------
-nombre1              --> 0x0008
-nombre2              --> 0x0009
-nombre3              --> 0x000A
-mult                 --> 0x000B
-resultat1            --> 0x000C
-resultat2            --> 0x000D
-resultat3            --> 0x000E
-stack_base           --> 0x0014
-debut                --> 0x001E
-multiplication       --> 0x002C
-boucle               --> 0x002E
+mult                 --> 0x000A
+nombre1              --> 0x000B
+nombre2              --> 0x000C
+nombre3              --> 0x000D
+resultat1            --> 0x000E
+resultat2            --> 0x000F
+resultat3            --> 0x0010
+pile                 --> 0x0014
+fond_pile            --> 0x0019
+SousP                --> 0x001E
+bcle                 --> 0x0020
+debut                --> 0x0026
 
 Table des Symboles :
 --------------------
-val_debut            --> 0
+
 
 Informations de creation issues de la compilation :
 ----------------------------------------------------
-IP_Address                 :10.1.105.162
+IP_Address                 :10.1.127.93
 Host_Name                  :Majdikali
-TAG_UID pour fichier 'asm' :8d98789190116fb1ffb444583785e8b477a78c43ef0c05d3393531d562a941c4--date :Mon, 23 Sep 2024 00:30:34.486278--taille :1228
-TAG_UID pour fichier 'sim' :5d9448ef9637f808b9f758971107a1438e45a41607256b21c27bfb8837b21f04--date :Mon, 23 Sep 2024 00:30:41.7143888--taille :254
-TAG_UID pour fichier 'lst' :875e2f1bd65c3bec72c0de02bcf0b2ac1e6da3b3d59138b21c366b41d3a8f2fe--date :Mon, 23 Sep 2024 00:30:41.7143888--taille :5297
+TAG_UID pour fichier 'asm' :6ec043ff6d71b98c14f311e65084a7a5d037317859ee727826bcd8740c08d646--date :Wed, 25 Sep 2024 08:05:40.4158475--taille :1868
+TAG_UID pour fichier 'sim' :0d45c067ab0beb060101d396e1d362ad5a351b97a2176c589d7c54478349822e--date :Wed, 25 Sep 2024 08:05:46.0519142--taille :264
+TAG_UID pour fichier 'lst' :2ba9bd4f9ff573f17fd018b01d4b6e22adeead65aacb439d900948c6a3fd9345--date :Wed, 25 Sep 2024 08:05:46.0519142--taille :5475
 ----------------------------------------------------
