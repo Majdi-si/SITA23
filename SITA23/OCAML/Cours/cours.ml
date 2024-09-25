@@ -33,7 +33,7 @@ let rec eval = fun e env ->
     match e with
     | False -> false
     | True -> true
-    | Var x -> failwith ("Variable " ^ x ^ " not found")
+    | Var x -> (try List.assoc x env with Not_found -> failwith ("Variable " ^ x ^ " not found"))
     | Or (e1, e2) -> eval e1 env || eval e2 env
     | And (e1, e2) -> eval e1 env && eval e2 env
 
