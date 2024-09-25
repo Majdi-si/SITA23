@@ -26,8 +26,8 @@ let rec nb_var = fun e ->
     | False -> 0
     | True -> 0
     | Var _ -> 1
-    | Or (e1, e2) -> 1 + nb_var(e1) + nb_var(e2)
-    | And (e1, e2) -> 1 + nb_var(e1) + nb_var(e2)
+    | Or (e1, e2) -> nb_var(e1) + nb_var(e2)
+    | And (e1, e2) -> nb_var(e1) + nb_var(e2)
 
 let rec eval = fun e env ->
     match e with
