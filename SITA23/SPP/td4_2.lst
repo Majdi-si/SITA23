@@ -1,0 +1,123 @@
+
+Fichier 'LST' issue du fichier 'ASM' : 
+/home/majdikali/Desktop/ENAC/SITA23/SITA23/SPP/td4_2.asm
+
+-------------------------------------------------------------------------------------
+| Adresse  |  Code  |  Ligne |       Label          |     Instruction      |  Type  |
+-------------------------------------------------------------------------------------
+|   0000   |  A238  |    15  |                      | jmp init             | I      |
+|   0001   |  FFFF  |        |           ad_SPIclav | FFFF                 | D      |
+|   0002   |  FFFF  |        |              ad_SPIt | FFFF                 | D      |
+|   0003   |  FFFF  |        |                      | FFFF                 | D      |
+|   0004   |  FFFF  |        |                      | FFFF                 | D      |
+|   0005   |  FFFF  |        |                      | FFFF                 | D      |
+|   0006   |  FFFF  |        |                      | FFFF                 | D      |
+|   0007   |  FFFF  |        |                      | FFFF                 | D      |
+|   0008   |  FFFF  |        |                      | FFFF                 | D      |
+|   0009   |  FFFF  |        |                      | FFFF                 | D      |
+|   000A   |  FFFF  |        |               valeur | FFFF                 | D      |
+|   000B   |  FFFF  |        |                      | FFFF                 | D      |
+|   000C   |  FFFF  |        |                      | FFFF                 | D      |
+|   000D   |  FFFF  |        |                      | FFFF                 | D      |
+|   000E   |  FFFF  |        |                      | FFFF                 | D      |
+|   000F   |  FFFF  |        |                      | FFFF                 | D      |
+|   0010   |  FFFF  |        |                      | FFFF                 | D      |
+|   0011   |  FFFF  |        |                      | FFFF                 | D      |
+|   0012   |  FFFF  |        |                      | FFFF                 | D      |
+|   0013   |  FFFF  |        |                      | FFFF                 | D      |
+|   0014   |  FFFF  |        |                 pile | FFFF                 | D      |
+|   0015   |  FFFF  |        |                      | FFFF                 | D      |
+|   0016   |  FFFF  |        |                      | FFFF                 | D      |
+|   0017   |  FFFF  |        |                      | FFFF                 | D      |
+|   0018   |  FFFF  |        |                      | FFFF                 | D      |
+|   0019   |  FFFF  |        |                      | FFFF                 | D      |
+|   001A   |  FFFF  |        |                      | FFFF                 | D      |
+|   001B   |  FFFF  |        |                      | FFFF                 | D      |
+|   001C   |  FFFF  |        |                      | FFFF                 | D      |
+|   001D   |  FFFF  |        |                      | FFFF                 | D      |
+|   001E   |  FFFF  |        |            fond_pile | FFFF                 | D      |
+|   001F   |  FFFF  |        |                      | FFFF                 | D      |
+|   0020   |  FFFF  |        |                      | FFFF                 | D      |
+|   0021   |  FFFF  |        |                      | FFFF                 | D      |
+|   0022   |  FFFF  |        |                      | FFFF                 | D      |
+|   0023   |  FFFF  |        |                      | FFFF                 | D      |
+|   0024   |  FFFF  |        |                      | FFFF                 | D      |
+|   0025   |  FFFF  |        |                      | FFFF                 | D      |
+|   0026   |  FFFF  |        |                      | FFFF                 | D      |
+|   0027   |  FFFF  |        |                      | FFFF                 | D      |
+|   0028   |  C250  |    40  |               It_man | push r0              | I      |
+|   0029   |  B001  |    41  |                      | ldr r0, 1            | I      |
+|   002A   |  D050  |    42  |                      | ldr fl, r0           | I      |
+|   002B   |  FEAC  |    43  |                      | hlt                  | I      |
+|   002C   |  B000  |    44  |                      | ldr r0,0             | I      |
+|   002D   |  500A  |    45  |                      | str [valeur],r0      | I      |
+|   002E   |  B000  |    46  |                      | ldr r0,0             | I      |
+|   002F   |  5FF9  |    47  |                      | str [PicuEOI],r0     | I      |
+|   0030   |  C050  |    48  |                      | pop r0               | I      |
+|   0031   |  C157  |    49  |                      | iret                 | I      |
+|   0032   |  C250  |    51  |              It_clav | push r0              | I      |
+|   0033   |  2FF4  |    52  |                      | ldr r2, [SRxTx]      | I      |
+|   0034   |  7FF4  |    53  |                      | str [SRxTx], r2      | I      |
+|   0035   |  B000  |    54  |                      | ldr r0,0             | I      |
+|   0036   |  5FF9  |    55  |                      | str [PicuEOI],r0     | I      |
+|   0037   |  C050  |    56  |                      | pop r0               | I      |
+|   0038   |  C157  |    57  |                      | iret                 | I      |
+|   0039   |  B000  |    60  |                 init | ldr r0, 0            | I      |
+|   003A   |  D050  |    61  |                      | ldr fl, r0           | I      |
+|   003B   |  B01E  |    62  |                      | ldr r0, fond_pile    | I      |
+|   003C   |  D060  |    63  |                      | ldr sp, r0           | I      |
+|   003D   |  B028  |    64  |                      | ldr r0,It_man        | I      |
+|   003E   |  5002  |    65  |                      | str [ad_SPIt],r0     | I      |
+|   003F   |  B032  |    66  |                      | ldr r0, It_clav      | I      |
+|   0040   |  5001  |    67  |                      | str [ad_SPIclav], r0 | I      |
+|   0041   |  B001  |    68  |                      | ldr r0, 1            | I      |
+|   0042   |  5FF3  |    69  |                      | str [PPMode], r0     | I      |
+|   0043   |  B004  |    70  |                      | ldr r0, masque       | I      |
+|   0044   |  5FF8  |    71  |                      | str [PicuMask], r0   | I      |
+|   0045   |  B007  |    72  |                      | ldr r0, 7            | I      |
+|   0046   |  5FF5  |    73  |                      | str [SModeEtat], r0  | I      |
+|   0047   |  B001  |    74  |                      | ldr r0, 1            | I      |
+|   0048   |  D050  |    75  |                      | ldr fl, r0           | I      |
+|   0049   |  B0FF  |    76  |                      | ldr r0, 0xff         | I      |
+|   004A   |  D010  |    77  |                      | ldr r1, r0           | I      |
+|   004B   |  B000  |    78  |                      | ldr r0, 0            | I      |
+|   004C   |  500A  |    79  |                      | str [valeur], r0     | I      |
+|   004D   |  000A  |    81  |                 bcle | ldr r0, [valeur]     | I      |
+|   004E   |  FE10  |    82  |                      | inc r0               | I      |
+|   004F   |  500A  |    83  |                      | str [valeur], r0     | I      |
+|   0050   |  E901  |    84  |                      | sub r4, r0r1         | I      |
+|   0051   |  A1FB  |    85  |                      | jmp bcle             | I      |
+|   0052   |  FEAC  |    86  |                      | hlt                  | I      |
+-------------------------------------------------------------------------------------
+
+Table des Etiquettes :
+----------------------
+ad_SPIclav           --> 0x0001
+ad_SPIt              --> 0x0002
+valeur               --> 0x000A
+pile                 --> 0x0014
+fond_pile            --> 0x001E
+It_man               --> 0x0028
+It_clav              --> 0x0032
+init                 --> 0x0039
+bcle                 --> 0x004D
+
+Table des Symboles :
+--------------------
+PicuMask             --> 0xFF8
+PicuEOI              --> 0xFF9
+PPMode               --> 0xFF3
+PPPortC              --> 0xFF2
+masque               --> 0x04
+mode                 --> 04
+SModeEtat            --> 0xFF5
+SRxTx                --> 0xFF4
+
+Informations de creation issues de la compilation :
+----------------------------------------------------
+IP_Address                 :10.1.120.195
+Host_Name                  :Majdikali
+TAG_UID pour fichier 'asm' :2a87476fc9f7149eed9fa1772649e70728e7e591a353ebf0bba48d27102ea3c4--date :Thu, 26 Sep 2024 15:13:33.0652387--taille :2784
+TAG_UID pour fichier 'sim' :6342236526527d859901fab9624c3d04bc1cd4bebc8aca2c48b650249ff55b6f--date :Thu, 26 Sep 2024 15:13:37.245381--taille :414
+TAG_UID pour fichier 'lst' :6937a83d33ec99c444eba0c20254a24cf74ade9e31de1db1ec9f3f681eda5b8c--date :Thu, 26 Sep 2024 15:13:37.249381--taille :8202
+----------------------------------------------------

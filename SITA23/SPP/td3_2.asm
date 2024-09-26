@@ -30,7 +30,7 @@ debut: ldr r0, [SModeEtat]
     jz debut
 
 affichage: ldr r0, [r4]
-    str [SRxTx], r0
+    str [SRxTx], r0 ; affichage du caractère
     inc r4
     dec r3
     jnz debut
