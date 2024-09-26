@@ -23,7 +23,14 @@ let sigma_terminal_fonc f a b s =
   in
   aux a 0 s
   
+let sigma_terminal_predicat f a b s cont =
+  let rec aux a acc =
+    if cont a then acc
+    else aux (s a) (acc + (f a))
+  in
+  aux a 0
 
+let rec 
 
 
 let () =
@@ -39,3 +46,4 @@ let () =
   Printf.printf "sigma_terminal_fonc (fun x -> x) 1 10 (fun x -> x + 1) = %d\n" (sigma_terminal_fonc (fun x -> x) 1 10 (fun x -> x + 1));
   Printf.printf "sigma_terminal_fonc (fun x -> x * x) 1 10 (fun x -> x + 1) = %d\n" (sigma_terminal_fonc (fun x -> x * x) 1 10 (fun x -> x + 1));
   Printf.printf "sigma_terminal_fonc (fun x -> x * x * x) 1 10 (fun x -> x + 1) = %d\n" (sigma_terminal_fonc (fun x -> x * x * x) 1 10 (fun x -> x + 1));
+  Printf.printf "sigma_terminal_predicat (fun x -> x) 1 10 (fun x -> x + 1) (fun x -> x > 10) = %d\n" (sigma_terminal_predicat (fun x -> x) 1 10 (fun x -> x + 1) (fun x -> x > 10));
