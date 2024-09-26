@@ -1,0 +1,107 @@
+
+Fichier 'LST' issue du fichier 'ASM' : 
+/home/majdikali/Desktop/ENAC/SITA23/SITA23/SPP/td4_1.asm
+
+-------------------------------------------------------------------------------------
+| Adresse  |  Code  |  Ligne |       Label          |     Instruction      |  Type  |
+-------------------------------------------------------------------------------------
+|   0000   |  A22E  |    11  |                      | jmp init             | I      |
+|   0001   |  FFFF  |        |                      | FFFF                 | D      |
+|   0002   |  FFFF  |        |              ad_SPIt | FFFF                 | D      |
+|   0003   |  FFFF  |        |                      | FFFF                 | D      |
+|   0004   |  FFFF  |        |                      | FFFF                 | D      |
+|   0005   |  FFFF  |        |                      | FFFF                 | D      |
+|   0006   |  FFFF  |        |                      | FFFF                 | D      |
+|   0007   |  FFFF  |        |                      | FFFF                 | D      |
+|   0008   |  FFFF  |        |                      | FFFF                 | D      |
+|   0009   |  FFFF  |        |                      | FFFF                 | D      |
+|   000A   |  FFFF  |        |               valeur | FFFF                 | D      |
+|   000B   |  FFFF  |        |                      | FFFF                 | D      |
+|   000C   |  FFFF  |        |                      | FFFF                 | D      |
+|   000D   |  FFFF  |        |                      | FFFF                 | D      |
+|   000E   |  FFFF  |        |                      | FFFF                 | D      |
+|   000F   |  FFFF  |        |                      | FFFF                 | D      |
+|   0010   |  FFFF  |        |                      | FFFF                 | D      |
+|   0011   |  FFFF  |        |                      | FFFF                 | D      |
+|   0012   |  FFFF  |        |                      | FFFF                 | D      |
+|   0013   |  FFFF  |        |                      | FFFF                 | D      |
+|   0014   |  FFFF  |        |                 pile | FFFF                 | D      |
+|   0015   |  FFFF  |        |                      | FFFF                 | D      |
+|   0016   |  FFFF  |        |                      | FFFF                 | D      |
+|   0017   |  FFFF  |        |                      | FFFF                 | D      |
+|   0018   |  FFFF  |        |                      | FFFF                 | D      |
+|   0019   |  FFFF  |        |                      | FFFF                 | D      |
+|   001A   |  FFFF  |        |                      | FFFF                 | D      |
+|   001B   |  FFFF  |        |                      | FFFF                 | D      |
+|   001C   |  FFFF  |        |                      | FFFF                 | D      |
+|   001D   |  FFFF  |        |                      | FFFF                 | D      |
+|   001E   |  FFFF  |        |            fond_pile | FFFF                 | D      |
+|   001F   |  FFFF  |        |                      | FFFF                 | D      |
+|   0020   |  FFFF  |        |                      | FFFF                 | D      |
+|   0021   |  FFFF  |        |                      | FFFF                 | D      |
+|   0022   |  FFFF  |        |                      | FFFF                 | D      |
+|   0023   |  FFFF  |        |                      | FFFF                 | D      |
+|   0024   |  FFFF  |        |                      | FFFF                 | D      |
+|   0025   |  FFFF  |        |                      | FFFF                 | D      |
+|   0026   |  FFFF  |        |                      | FFFF                 | D      |
+|   0027   |  FFFF  |        |                      | FFFF                 | D      |
+|   0028   |  C250  |    30  |               It_man | push r0              | I      |
+|   0029   |  B000  |    31  |                      | ldr r0,0             | I      |
+|   002A   |  500A  |    32  |                      | str [valeur],r0      | I      |
+|   002B   |  B000  |    33  |                      | ldr r0,0             | I      |
+|   002C   |  5FF9  |    34  |                      | str [PicuEOI],r0     | I      |
+|   002D   |  C050  |    35  |                      | pop r0               | I      |
+|   002E   |  C157  |    36  |                      | iret                 | I      |
+|   002F   |  B000  |    39  |                 init | ldr r0, 0            | I      |
+|   0030   |  D050  |    40  |                      | ldr fl, r0           | I      |
+|   0031   |  B01E  |    41  |                      | ldr r0, fond_pile    | I      |
+|   0032   |  D060  |    42  |                      | ldr sp, r0           | I      |
+|   0033   |  B028  |    43  |                      | ldr r0,It_man        | I      |
+|   0034   |  5002  |    44  |                      | str [ad_SPIt],r0     | I      |
+|   0035   |  B001  |    45  |                      | ldr r0, 1            | I      |
+|   0036   |  5FF3  |    46  |                      | str [PPMode], r0     | I      |
+|   0037   |  B005  |    47  |                      | ldr r0, masque       | I      |
+|   0038   |  5FF8  |    48  |                      | str [PicuMask], r0   | I      |
+|   0039   |  B001  |    49  |                      | ldr r0, 1            | I      |
+|   003A   |  D050  |    50  |                      | ldr fl, r0           | I      |
+|   003B   |  B0FF  |    51  |                      | ldr r0, 0xff         | I      |
+|   003C   |  D010  |    52  |                      | ldr r1, r0           | I      |
+|   003D   |  B000  |    53  |                      | ldr r0, 0            | I      |
+|   003E   |  500A  |    54  |                      | str [valeur], r0     | I      |
+|   003F   |  000A  |    56  |                 bcle | ldr r0, [valeur]     | I      |
+|   0040   |  5FF2  |    57  |                      | str [PPPortC], r0    | I      |
+|   0041   |  FE10  |    58  |                      | inc r0               | I      |
+|   0042   |  500A  |    59  |                      | str [valeur], r0     | I      |
+|   0043   |  E901  |    60  |                      | sub r4, r0r1         | I      |
+|   0044   |  ACFA  |    61  |                      | jnz bcle             | I      |
+|   0045   |  A1F9  |    62  |                      | jmp bcle             | I      |
+|   0046   |  FEAC  |    63  |                      | hlt                  | I      |
+-------------------------------------------------------------------------------------
+
+Table des Etiquettes :
+----------------------
+ad_SPIt              --> 0x0002
+valeur               --> 0x000A
+pile                 --> 0x0014
+fond_pile            --> 0x001E
+It_man               --> 0x0028
+init                 --> 0x002F
+bcle                 --> 0x003F
+
+Table des Symboles :
+--------------------
+PicuMask             --> 0xFF8
+PicuEOI              --> 0xFF9
+PPMode               --> 0xFF3
+PPPortC              --> 0xFF2
+masque               --> 0x05
+mode                 --> 04
+
+Informations de creation issues de la compilation :
+----------------------------------------------------
+IP_Address                 :10.1.120.59
+Host_Name                  :Majdikali
+TAG_UID pour fichier 'asm' :7102bd1302bec5bc9aa71fe01edd53339592c6c7d50addc0ab4e8f572f890f2f--date :Thu, 26 Sep 2024 14:06:13.2447324--taille :1463
+TAG_UID pour fichier 'sim' :ebac933c414547e06db12eafec957a9519f65db1a29a6b85aa8ca1b28cf8673d--date :Thu, 26 Sep 2024 14:06:16.9250422--taille :354
+TAG_UID pour fichier 'lst' :5388264443e5a471ca267bdccb517154368387487eeb9971ab98cc2dbb155b58--date :Thu, 26 Sep 2024 14:06:16.9250422--taille :7044
+----------------------------------------------------
