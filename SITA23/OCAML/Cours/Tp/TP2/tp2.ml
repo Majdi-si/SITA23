@@ -23,14 +23,22 @@ let sigma_terminal_fonc f a b s =
   in
   aux a 0 s
   
-let sigma_terminal_predicat f a b s cont =
+let sigma_terminal_predicat f a b s cont  =
   let rec aux a acc =
     if cont a then acc
     else aux (s a) (acc + (f a))
   in
   aux a 0
 
-let rec 
+let sigma_terminal_binaire f a b s cont binaire neutre =
+  let rec aux a acc =
+    if cont a then acc
+    else aux (s a) (binaire acc  (f a))
+  in
+  aux a neutre
+
+let integrale f a b dx = 
+  sigma_terminal_binaire f a b (fun x -> dx *. f x) (fun x -> x>b) (fun x y-> x +. y) 0.
 
 
 let () =
@@ -47,3 +55,6 @@ let () =
   Printf.printf "sigma_terminal_fonc (fun x -> x * x) 1 10 (fun x -> x + 1) = %d\n" (sigma_terminal_fonc (fun x -> x * x) 1 10 (fun x -> x + 1));
   Printf.printf "sigma_terminal_fonc (fun x -> x * x * x) 1 10 (fun x -> x + 1) = %d\n" (sigma_terminal_fonc (fun x -> x * x * x) 1 10 (fun x -> x + 1));
   Printf.printf "sigma_terminal_predicat (fun x -> x) 1 10 (fun x -> x + 1) (fun x -> x > 10) = %d\n" (sigma_terminal_predicat (fun x -> x) 1 10 (fun x -> x + 1) (fun x -> x > 10));
+  Printf.printf "sigma_terminal_binaire (fun x -> x) 1 10 (fun x -> x + 1) (fun x -> x > 10) (fun x y  -> x+y) = %d\n" (sigma_terminal_binaire (fun x -> x) 1 10 (fun x -> x + 1) (fun x -> x > 10) (fun x y -> x+y) 0);
+  Printf.printf "Factoriel 5 = %d\n" (sigma_terminal_binaire (fun x -> x) 1 5 (fun x -> x+1) (fun x -> x > 5) (fun x y  -> x*y) 1);
+  Printf.printf "Intégrale de 1 à 100 de x² = %f\n" (integrale (fun x -> x*.x) 1. 100. 0.1);
