@@ -1,8 +1,8 @@
 ;td 3-2 affichage message avec test mot d'état
 
-SModeEtat EQU 0xFF5
+SModeEtat EQU 0xFF5 ; mot d'état
 
-SRxTx EQU 0xFF4
+SRxTx EQU 0xFF4 ; registre de communication
 
 org 0 ; première instruction
 
