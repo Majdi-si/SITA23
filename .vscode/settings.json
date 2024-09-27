@@ -3,6 +3,7 @@
         "kind": "global"
     },
     "files.associations": {
-        "annuaire.h": "c"
+        "annuaire.h": "c",
+        "string.h": "c"
     }
 }

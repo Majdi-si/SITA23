@@ -3,15 +3,43 @@
 #include <string.h>
 #include <ctype.h>
 #include "annuaire.h" 
+#include <errno.h>
 
 #define NB_MAX 100
 
 
 
+/* ******************************** */
 /* fonction affichant les options offertes par le menu � l'utilisateur */
-void afficherMenu();
+void afficherMenu(){
 
-char* majuscule(char *chaine);
+    printf("\t\t\t\t MENU PRINCIPAL\n\n\n\n");
+    printf("\t\t Saisir des personnes          A\n");
+    printf("\t\t Supprimer des personnes       S\n");
+    printf("\t\t Visualiser l'annuaire         V\n");
+    printf("\t\t Quitter                       Q\n\n");
+    printf("\t\t Votre choix :");
+}
+
+void enlever_retour_chariot(char *chaine){
+    int i = 0;
+    while(chaine[i] != '\0'){
+        if(chaine[i] == '\n'){
+            chaine[i] = '\0';
+        }
+        i++;
+    }
+}
+
+
+char* majuscule(char *chaine){
+    int i = 0;
+    int length = strlen(chaine);
+    for(i = 0; i<length; i++){
+        chaine[i] = toupper(chaine[i]);
+    }
+    return chaine;
+};
 
 void saisirPersonne(int *index, personne **tab) {
     *tab = (personne*)realloc(*tab, (*index + 1) * sizeof(personne));
@@ -22,14 +50,17 @@ void saisirPersonne(int *index, personne **tab) {
 
     printf("Nom : ");
     fgets((*tab)[*index].nom, 20, stdin);
+    enlever_retour_chariot((*tab)[*index].nom);
     majuscule((*tab)[*index].nom);
 
     printf("Prenom : ");
     fgets((*tab)[*index].prenom, 20, stdin);
+    enlever_retour_chariot((*tab)[*index].prenom);
     majuscule((*tab)[*index].prenom);
 
     printf("Telephone : ");
     fgets((*tab)[*index].tel, 12, stdin);
+    enlever_retour_chariot((*tab)[*index].tel);
     
     (*index)++;
 
@@ -80,25 +111,27 @@ void editerAnnuaire(int *index, personne **tab){
     }
 }
 
-char* majuscule(char *chaine){
-    int i = 0;
-    int length = strlen(chaine);
-    for(i = 0; i<length; i++){
-        chaine[i] = toupper(chaine[i]);
+void ecrire_fichier(char *nomfic, personne **tab, int *index) {
+    errno = 0;
+    FILE *fic = NULL;
+    fic = fopen(nomfic, "a");
+    if (errno != 0) {
+        printf("Erreur d'ouverture du fichier %s: %s\n", nomfic, strerror(errno));
+        return;
+    } else {
+        for (int i = 0; i < *index; i++) {
+            if (fputs((*tab)[i].nom, fic) != EOF) {
+                fputc(' ', fic); // Ajouter un espace après le nom
+                if (fputs((*tab)[i].prenom, fic) != EOF) {
+                    fputc(' ', fic); // Ajouter un espace après le prénom
+                    if (fputs((*tab)[i].tel, fic) != EOF) {
+                        fputc('\n', fic); // Ajouter un retour à la ligne après le téléphone
+                        printf("Transfert réussi \n");
+                    }
+                }
+            }
+        }
     }
-    return chaine;
-};
-
-/* ******************************** */
-/* fonction affichant les options offertes par le menu � l'utilisateur */
-void afficherMenu(){
-
-    printf("\t\t\t\t MENU PRINCIPAL\n\n\n\n");
-    printf("\t\t Saisir des personnes          A\n");
-    printf("\t\t Supprimer des personnes       S\n");
-    printf("\t\t Visualiser l'annuaire         V\n");
-    printf("\t\t Quitter                       Q\n\n");
-    printf("\t\t Votre choix :");
+    fclose(fic); // N'oubliez pas de fermer le fichier
 }
-
 

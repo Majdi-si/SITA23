@@ -15,3 +15,4 @@ void saisirPersonne(int *index, personne **tab);
 void supprimerPersonne(int *index, personne **tab);
 void editerAnnuaire(int *index, personne **tab);
 char* majuscule(char *chaine);
+void ecrire_fichier(char * nomfic, personne **tab, int *index);
