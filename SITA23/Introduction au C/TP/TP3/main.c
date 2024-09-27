@@ -15,8 +15,9 @@ int main (){
     errno = 0;
 
     FILE *fic=fopen(nomfic,"r");
-    personne* tab = NULL;
     int index = 0;
+    personne* tab = chargerFichierTexte(nomfic, &index); 
+
 
      if (errno != 0)
     {
@@ -34,13 +35,12 @@ int main (){
             rep = toupper(getchar());
             getchar();
             switch (rep) {
-                case 'A': saisirPersonne(&index, &tab); break;
+                case 'A': saisirPersonne(&index, &tab); ecrire_fichier(nomfic, &tab, &index); break;
                 case 'S': supprimerPersonne(&index, &tab); break;
                 case 'V': editerAnnuaire(&index, &tab); break;
                 case 'Q': break;
             }
         } while (rep != 'Q');
-        ecrire_fichier(nomfic, &tab, &index);
         free(tab);
         
     }

@@ -135,3 +135,29 @@ void ecrire_fichier(char *nomfic, personne **tab, int *index) {
     fclose(fic); // N'oubliez pas de fermer le fichier
 }
 
+personne* chargerFichierTexte(char *nomfic, int *index) {
+    errno = 0;
+    FILE *fic = NULL;
+    personne *tab = NULL;
+    *index = 0;
+
+    fic = fopen(nomfic, "r");
+    if (errno != 0) {
+        printf("Erreur d'ouverture du fichier %s: %s\n", nomfic, strerror(errno));
+        return NULL;
+    } else {
+        while (!feof(fic)) {
+            tab = (personne*)realloc(tab, (*index + 1) * sizeof(personne));
+            if (*index >= NB_MAX) {
+                printf("Annuaire plein.\n");
+                fclose(fic);
+                return tab;
+            }
+            if (fscanf(fic, "%s %s %s", tab[*index].nom, tab[*index].prenom, tab[*index].tel) == 3) {
+                (*index)++;
+            }
+        }
+    }
+    fclose(fic);
+    return tab;
+}
