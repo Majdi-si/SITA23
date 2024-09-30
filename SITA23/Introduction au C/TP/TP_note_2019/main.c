@@ -7,8 +7,8 @@ void partie2();
 
 int main()
 {
-    partie1();
-    /*partie2();*/
+    /*partie1();*/
+    partie2();
     return 0;
 }
 
