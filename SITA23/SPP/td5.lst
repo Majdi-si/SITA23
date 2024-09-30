@@ -1,0 +1,198 @@
+
+Fichier 'LST' issue du fichier 'ASM' : 
+/home/majdikali/Desktop/ENAC/SITA23/SITA23/SPP/td5.asm
+
+-------------------------------------------------------------------------------------
+| Adresse  |  Code  |  Ligne |       Label          |     Instruction      |  Type  |
+-------------------------------------------------------------------------------------
+|   0000   |  A272  |    17  |                      | jmp init             | I      |
+|   0001   |  FFFF  |        |        vecteur_int_0 | FFFF                 | D      |
+|   0002   |  FFFF  |        |        vecteur_int_1 | FFFF                 | D      |
+|   0003   |  FFFF  |        |        vecteur_int_2 | FFFF                 | D      |
+|   0004   |  FFFF  |        |                      | FFFF                 | D      |
+|   0005   |  FFFF  |        |                      | FFFF                 | D      |
+|   0006   |  FFFF  |        |                      | FFFF                 | D      |
+|   0007   |  FFFF  |        |                      | FFFF                 | D      |
+|   0008   |  FFFF  |        |                      | FFFF                 | D      |
+|   0009   |  FFFF  |        |                      | FFFF                 | D      |
+|   000A   |  FFFF  |        |             chenille | FFFF                 | D      |
+|   000B   |  FFFF  |        |                  led | FFFF                 | D      |
+|   000C   |  FFFF  |        |            direction | FFFF                 | D      |
+|   000D   |  FFFF  |        |                      | FFFF                 | D      |
+|   000E   |  FFFF  |        |                      | FFFF                 | D      |
+|   000F   |  FFFF  |        |                      | FFFF                 | D      |
+|   0010   |  FFFF  |        |                      | FFFF                 | D      |
+|   0011   |  FFFF  |        |                      | FFFF                 | D      |
+|   0012   |  FFFF  |        |                      | FFFF                 | D      |
+|   0013   |  FFFF  |        |                      | FFFF                 | D      |
+|   0014   |  FFFF  |        |                      | FFFF                 | D      |
+|   0015   |  FFFF  |        |                      | FFFF                 | D      |
+|   0016   |  FFFF  |        |                      | FFFF                 | D      |
+|   0017   |  FFFF  |        |                      | FFFF                 | D      |
+|   0018   |  FFFF  |        |                      | FFFF                 | D      |
+|   0019   |  FFFF  |        |                      | FFFF                 | D      |
+|   001A   |  FFFF  |        |                      | FFFF                 | D      |
+|   001B   |  FFFF  |        |                      | FFFF                 | D      |
+|   001C   |  FFFF  |        |                      | FFFF                 | D      |
+|   001D   |  FFFF  |        |                      | FFFF                 | D      |
+|   001E   |  FFFF  |        |                      | FFFF                 | D      |
+|   001F   |  FFFF  |        |                      | FFFF                 | D      |
+|   0020   |  FFFF  |        |                      | FFFF                 | D      |
+|   0021   |  FFFF  |        |                      | FFFF                 | D      |
+|   0022   |  FFFF  |        |                      | FFFF                 | D      |
+|   0023   |  FFFF  |        |                      | FFFF                 | D      |
+|   0024   |  FFFF  |        |                      | FFFF                 | D      |
+|   0025   |  FFFF  |        |                      | FFFF                 | D      |
+|   0026   |  FFFF  |        |                      | FFFF                 | D      |
+|   0027   |  FFFF  |        |                      | FFFF                 | D      |
+|   0028   |  FFFF  |        |                      | FFFF                 | D      |
+|   0029   |  FFFF  |        |                      | FFFF                 | D      |
+|   002A   |  FFFF  |        |                      | FFFF                 | D      |
+|   002B   |  FFFF  |        |                      | FFFF                 | D      |
+|   002C   |  FFFF  |        |                      | FFFF                 | D      |
+|   002D   |  FFFF  |        |                      | FFFF                 | D      |
+|   002E   |  FFFF  |        |                      | FFFF                 | D      |
+|   002F   |  FFFF  |        |                      | FFFF                 | D      |
+|   0030   |  FFFF  |        |                      | FFFF                 | D      |
+|   0031   |  FFFF  |        |                      | FFFF                 | D      |
+|   0032   |  FFFF  |        |                 pile | FFFF                 | D      |
+|   0033   |  FFFF  |        |                      | FFFF                 | D      |
+|   0034   |  FFFF  |        |                      | FFFF                 | D      |
+|   0035   |  FFFF  |        |                      | FFFF                 | D      |
+|   0036   |  FFFF  |        |                      | FFFF                 | D      |
+|   0037   |  FFFF  |        |                      | FFFF                 | D      |
+|   0038   |  FFFF  |        |                      | FFFF                 | D      |
+|   0039   |  FFFF  |        |                      | FFFF                 | D      |
+|   003A   |  FFFF  |        |                      | FFFF                 | D      |
+|   003B   |  FFFF  |        |                      | FFFF                 | D      |
+|   003C   |  FFFF  |        |                      | FFFF                 | D      |
+|   003D   |  FFFF  |        |                      | FFFF                 | D      |
+|   003E   |  FFFF  |        |                      | FFFF                 | D      |
+|   003F   |  FFFF  |        |                      | FFFF                 | D      |
+|   0040   |  FFFF  |        |                      | FFFF                 | D      |
+|   0041   |  FFFF  |        |                      | FFFF                 | D      |
+|   0042   |  FFFF  |        |                      | FFFF                 | D      |
+|   0043   |  FFFF  |        |                      | FFFF                 | D      |
+|   0044   |  FFFF  |        |                      | FFFF                 | D      |
+|   0045   |  FFFF  |        |            base_pile | FFFF                 | D      |
+|   0046   |  FFFF  |        |                      | FFFF                 | D      |
+|   0047   |  FFFF  |        |                      | FFFF                 | D      |
+|   0048   |  C250  |    40  |           int_manuel | push r0              | I      |
+|   0049   |  C251  |    41  |                      | push r1              | I      |
+|   004A   |  000C  |    42  |                      | ldr r0, [direction]  | I      |
+|   004B   |  FE00  |    43  |                      | not r0               | I      |
+|   004C   |  D010  |    44  |                      | ldr r1, r0           | I      |
+|   004D   |  B001  |    45  |                      | ldr r0, 1            | I      |
+|   004E   |  F001  |    46  |                      | and r0, r0r1         | I      |
+|   004F   |  500C  |    47  |                      | str [direction], r0  | I      |
+|   0050   |  B000  |    48  |                      | ldr r0, 0            | I      |
+|   0051   |  5FF9  |    49  |                      | str [PICU_EOI], r0   | I      |
+|   0052   |  C051  |    50  |                      | pop r1               | I      |
+|   0053   |  C050  |    51  |                      | pop r0               | I      |
+|   0054   |  C157  |    52  |                      | iret                 | I      |
+|   0055   |  C250  |    55  |        int_minuterie | push r0              | I      |
+|   0056   |  C251  |    56  |                      | push r1              | I      |
+|   0057   |  C252  |    57  |                      | push r2              | I      |
+|   0058   |  C255  |    58  |                      | push fl              | I      |
+|   0059   |  100C  |    59  |                      | ldr r1, [direction]  | I      |
+|   005A   |  B001  |    60  |                      | ldr r0, 1            | I      |
+|   005B   |  E501  |    61  |                      | sub r0, r0r1         | I      |
+|   005C   |  000A  |    62  |                      | ldr r0, [chenille]   | I      |
+|   005D   |  D020  |    63  |                      | ldr r2, r0           | I      |
+|   005E   |  D010  |    64  |                      | ldr r1, r0           | I      |
+|   005F   |  B100  |    65  |                      | ldr r0, 0x100        | I      |
+|   0060   |  F110  |    66  |                      | and r1, r1r0         | I      |
+|   0061   |  FE12  |    67  |                      | inc r2               | I      |
+|   0062   |  B0FF  |    68  |                      | ldr r0, 0xff         | I      |
+|   0063   |  F220  |    69  |                      | and r2, r2r0         | I      |
+|   0064   |  C250  |    72  |          int_clavier | push r0              | I      |
+|   0065   |  C251  |    73  |                      | push r1              | I      |
+|   0066   |  C255  |    74  |                      | push fl              | I      |
+|   0067   |  0FF4  |    75  |                      | ldr r0, [SERIAL_RXTX] | I      |
+|   0068   |  D010  |    76  |                      | ldr r1, r0           | I      |
+|   0069   |  B053  |    77  |                      | ldr r0, 0x53         | I      |
+|   006A   |  E501  |    78  |                      | sub r0, r0r1         | I      |
+|   006B   |  AD01  |    79  |                      | jnz pas_ok           | I      |
+|   006C   |  FEAC  |    80  |                      | hlt                  | I      |
+|   006D   |  B000  |    82  |               pas_ok | ldr r0, 0            | I      |
+|   006E   |  5FF9  |    83  |                      | str [PICU_EOI], r0   | I      |
+|   006F   |  C055  |    84  |                      | pop fl               | I      |
+|   0070   |  C051  |    85  |                      | pop r1               | I      |
+|   0071   |  C050  |    86  |                      | pop r0               | I      |
+|   0072   |  C157  |    87  |                      | iret                 | I      |
+|   0073   |  B000  |    90  |                 init | ldr r0, 0            | I      |
+|   0074   |  D050  |    91  |                      | ldr fl, r0           | I      |
+|   0075   |  B045  |    92  |                      | ldr r0, base_pile    | I      |
+|   0076   |  D060  |    93  |                      | ldr sp, r0           | I      |
+|   0077   |  B007  |    94  |                      | ldr r0, 7            | I      |
+|   0078   |  5FF5  |    95  |                      | str [SERIAL_MODE], r0 | I      |
+|   0079   |  B064  |    96  |                      | ldr r0, int_clavier  | I      |
+|   007A   |  5001  |    97  |                      | str [vecteur_int_0], r0 | I      |
+|   007B   |  B048  |    98  |                      | ldr r0, int_manuel   | I      |
+|   007C   |  5002  |    99  |                      | str [vecteur_int_1], r0 | I      |
+|   007D   |  B055  |   100  |                      | ldr r0, int_minuterie | I      |
+|   007E   |  5003  |   101  |                      | str [vecteur_int_2], r0 | I      |
+|   007F   |  B003  |   102  |                      | ldr r0, PP_MODE_VAL  | I      |
+|   0080   |  5FF3  |   103  |                      | str [PP_MODE], r0    | I      |
+|   0081   |  B000  |   104  |                      | ldr r0, MASQUE       | I      |
+|   0082   |  5FF8  |   105  |                      | str [PICU_MASK], r0  | I      |
+|   0083   |  B001  |   106  |                      | ldr r0, 1            | I      |
+|   0084   |  500C  |   107  |                      | str [direction], r0  | I      |
+|   0085   |  B005  |   108  |                      | ldr r0, 5            | I      |
+|   0086   |  500A  |   109  |                      | str [chenille], r0   | I      |
+|   0087   |  B055  |   110  |                      | ldr r0, 0x55         | I      |
+|   0088   |  500B  |   111  |                      | str [led], r0        | I      |
+|   0089   |  B002  |   112  |                      | ldr r0, 2            | I      |
+|   008A   |  5FF6  |   113  |                      | str [TIMER_MODE], r0 | I      |
+|   008B   |  B05F  |   114  |                      | ldr r0, 0x05F        | I      |
+|   008C   |  5FF7  |   115  |                      | str [TIMER_BUFF], r0 | I      |
+|   008D   |  B001  |   116  |                      | ldr r0, 1            | I      |
+|   008E   |  D050  |   117  |                      | ldr fl, r0           | I      |
+|   008F   |  0FF0  |   118  |                      | ldr r0, [PP_PORT_A]  | I      |
+|   0090   |  500A  |   119  |                      | str [chenille], r0   | I      |
+|   0091   |  000A  |   121  |               boucle | ldr r0, [chenille]   | I      |
+|   0092   |  5FF1  |   122  |                      | str [PP_PORT_B], r0  | I      |
+|   0093   |  A1FD  |   123  |                      | jmp boucle           | I      |
+|   0094   |  FEAC  |   124  |                      | hlt                  | I      |
+-------------------------------------------------------------------------------------
+
+Table des Etiquettes :
+----------------------
+vecteur_int_0        --> 0x0001
+vecteur_int_1        --> 0x0002
+vecteur_int_2        --> 0x0003
+chenille             --> 0x000A
+led                  --> 0x000B
+direction            --> 0x000C
+pile                 --> 0x0032
+base_pile            --> 0x0045
+int_manuel           --> 0x0048
+int_minuterie        --> 0x0055
+int_clavier          --> 0x0064
+pas_ok               --> 0x006D
+init                 --> 0x0073
+boucle               --> 0x0091
+
+Table des Symboles :
+--------------------
+PICU_MASK            --> 0xFF8
+PICU_EOI             --> 0xFF9
+PP_MODE              --> 0xFF3
+PP_PORT_A            --> 0xFF0
+PP_PORT_B            --> 0xFF1
+PP_PORT_C            --> 0xFF2
+MASQUE               --> 0x00
+PP_MODE_VAL          --> 3
+TIMER_MODE           --> 0xFF6
+TIMER_BUFF           --> 0xFF7
+SERIAL_MODE          --> 0xFF5
+SERIAL_RXTX          --> 0xFF4
+
+Informations de creation issues de la compilation :
+----------------------------------------------------
+IP_Address                 :10.1.121.35
+Host_Name                  :Majdikali
+TAG_UID pour fichier 'asm' :a18fe5f7b8d5f66815bd1eed58bfca0a45735ed16fbd443db4361a7733ad0312--date :Mon, 30 Sep 2024 11:34:32.0856555--taille :3683
+TAG_UID pour fichier 'sim' :e973a2b8fa3806a77167442ded9376727f27ee67a62d93d6075054e3bba0e27e--date :Mon, 30 Sep 2024 11:34:35.429689--taille :744
+TAG_UID pour fichier 'lst' :fcf0484151ae0cf80e377835e5cadeb416c255d61863fd1ca4110ce52cb8e0df--date :Mon, 30 Sep 2024 11:34:35.429689--taille :14171
+----------------------------------------------------

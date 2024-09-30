@@ -43,7 +43,7 @@ int_manuel: push r0
             not r0               ; Inverser la direction
             ldr r1, r0           ; Masque
             ldr r0, 1            ; Charger 1
-            and r0, r0, r1       ; Isoler le bit 0
+            and r0, r0r1       ; Isoler le bit 0
             str [direction], r0  ; Stocker la direction
             ldr r0, 0
             str [PICU_EOI], r0   ; Envoyer EOI
@@ -58,40 +58,15 @@ int_minuterie: push r0
                push fl
                ldr r1, [direction]
                ldr r0, 1
-               sub r0, r0, r1
-               jz rotation_droite
+               sub r0, r0r1
                ldr r0, [chenille]
-               ROL r0,1            ; Rotation à gauche
                ldr r2, r0           ; Sauvegarder la rotation
                ldr r1, r0           ; Sauvegarder la rotation
                ldr r0, 0x100        ; Masque 0100h
-               and r1, r1, r0       ; Tester le débordement dans les bits élevés
-               jz fin_int           ; Si pas de débordement, continuer
+               and r1, r1r0       ; Tester le débordement dans les bits élevés
                inc r2               ; Débordement, ajouter 1 aux bits bas
                ldr r0, 0xff         ; Masque bits élevés
-               and r2, r2, r0       ; Réinitialiser les bits élevés
-               jmp fin_int
-
-rotation_droite: ldr r0, [chenille]
-                 ROR r0, 1            ; Rotation à droite
-                 ldr r2, r0           ; Sauvegarder la rotation
-                 ldr r0, 0x800        ; Masque 8000h
-                 shl r0, 4            ; Décalage à gauche 4 fois (adressage 12 bits)
-                 and r0, r0, r2       ; Tester le débordement dans les bits bas
-                 jz fin_int           ; Si pas de débordement, continuer
-                 ldr r0, 0x80         ; Définir le bit élevé
-                 or r2, r0, r2
-                 ldr r0, 0xff         ; Masque bit élevé
-                 and r2, r0, r2
-          
-fin_int: str [chenille], r2   ; Stocker chenille
-         ldr r0, 0
-         str [PICU_EOI], r0   ; Envoyer EOI
-         pop fl
-         pop r2
-         pop r1
-         pop r0
-         iret
+               and r2, r2r0       ; Réinitialiser les bits élevés
      
 ; Gestionnaire d'interruption pour interruption clavier
 int_clavier: push r0
@@ -100,7 +75,7 @@ int_clavier: push r0
              ldr r0, [SERIAL_RXTX] ; Charger le caractère du clavier
              ldr r1, r0
              ldr r0, 0x53
-             sub r0, r0, r1
+             sub r0, r0r1
              jnz pas_ok
              hlt
 
