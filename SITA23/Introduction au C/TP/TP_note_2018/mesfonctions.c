@@ -16,6 +16,8 @@ int calculerNbreNucleotide(Genome g, char n){
     return compteur;
 }
 
+
+
 int main(){
     Genome g;
     strcpy(g.data, "ACGTAAGTC");
