@@ -8,7 +8,7 @@ void partie2();
 int main()
 {
     partie1();
-    partie2();
+    /*partie2();*/
     return 0;
 }
 
@@ -67,7 +67,7 @@ void partie2()
         printf("\tsaisir S\n");
         printf("\tafficher A\n");
         printf("\tcalculerOccupation O\n");
-        printf("\tlibérer L\n");
+        printf("\tlibï¿½rer L\n");
         printf("\tquitter Q\n");
         printf("votre choix :");
         rep=getchar();

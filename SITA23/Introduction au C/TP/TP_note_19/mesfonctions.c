@@ -7,7 +7,29 @@
 /*  saisie clavier des caract�ristiques d'un avion � la fin du tableau statique */
 void saisir( int *nb, Avion *t)
 {
+    if (*nb >= NBMAX) {
+        printf("Nb avions plein.\n");
+        return;
+    }
 
+    printf("Indicatif : ");
+    fgets((t)[*nb].indicatif, 20, stdin);
+
+
+    printf("Marque : ");
+    fgets((t)[*nb].marque, 20, stdin);
+
+    printf("Type : ");
+    fgets((t)[*nb].type, 20, stdin);
+
+    printf("Nombre de places : ");
+    scanf("%d", &(t)[*nb].nbplaces);
+
+    printf("Nombre de réservations : ");
+    scanf("%d", &(t)[*nb].nbresa);
+    
+    (*nb)++;
+    getchar();
 }
 
 /*******************************/
