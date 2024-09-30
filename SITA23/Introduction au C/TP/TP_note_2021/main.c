@@ -12,15 +12,18 @@ int main()
     Course *courses=NULL;
     int nbc=0;
 
-    chargerPilotes(&nbp,&pilotes, "pilotes.txt");
+    chargerPilotes(&nbp,&pilotes, "fichier_pilotes.txt");
+
     afficherPilotes(nbp,pilotes);
 
-    chargerCourses(&nbc, &courses,"courses.txt");
+    chargerCourses(&nbc, &courses,"fichier_courses.txt");
     afficherCourses(nbc,courses);
 
     initPointsClassement(&tabclas);
 
     calculerPointsPilotes(nbp,pilotes,tabclas, nbc,courses);
+
+    afficherPilotes(nbp,pilotes);
 
     sauverPilotes(nbp,pilotes,"pilotesresultats.txt");
     liberer(&nbp,&pilotes, &nbc, &courses, &tabclas);
