@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <errno.h>
 
 void afficherTrain(int index,wagon * train)
 {
@@ -46,23 +47,20 @@ return somme;
 
 }
 /**************************************************/
-/* ajoute à la fin du tableau un nouveau wagon : réallocation dynamique pour agrandir */
+/* ajoute ï¿½ la fin du tableau un nouveau wagon : rï¿½allocation dynamique pour agrandir */
 void ajouterWagonDyn(char *type,int ident, int data ,int *index,wagon **train)
 {
-	// le tableau a une taille actuelle de (*index) cases.
-	// on l'agrandit d'une case en plus :
-    wagon * newtrain=realloc(*train,sizeof(wagon)*(*index + 1));
+    *train = (wagon *)realloc(*train, (*index + 1) * sizeof(wagon));
+    if (*index >= NBMAXWAGONS) {
+        printf("Nb wagons plein.\n");
+        return;
+    }
 
-if ( newtrain) // allocation réussie
-{
-    *train=newtrain;
-    strcpy((*train)[*index].type,type);
-    (*train)[*index].ident=ident;
-    (*train)[*index].data=data;
-    (*index) ++;
-}
-else
-    fprintf(stderr,"allocation impossible...ajouterwagon\n");
+    strcpy((*train)[*index].type, type);
+     (*train)[*index].ident = ident;
+     (*train)[*index].data = data;
+
+    (*index)++;
 
 }
 /**************************************************/
@@ -88,46 +86,39 @@ else
 /**************************************************/
 void chargerTrainDyn(char * nomfic, int *index, wagon ** train)
 {
-FILE *fic=fopen(nomfic,"r");
-if (fic)
-{
-    wagon w;
-    while (fscanf (fic, "%s %d %d\n", w.type,&w.ident,&w.data ) >= 2)
+    errno = 0;
+    FILE *fic=fopen(nomfic,"r");
+    if (errno != 0)
     {
-        // correction version 1 :
-		(*index) ++;
-        wagon * nt=(wagon*)realloc(*train,sizeof(wagon)* (*index));
-        if (nt)
-        {
-            *train=nt;
-            (*train)[(*index)-1]=w;
-        }
-		// fin correction version 1
-		// correction version 2 :
-		// ajouterWagonDyn((w.type,w.ident,w.data ,index,train);		
-		// fin correction version2
-        else
-            {
-                fprintf(stderr,"pb realloc chargerTrainDyn\n");
-                exit(1);
-            }
+        printf("Erreur d'ouverture du fichier %s: %s\n", nomfic, strerror(errno));
+        return;
     }
-    (*index)=i;
+    else{
+        int i=0;
+        char chaine[40];
+        // lecture ligne par ligne dans le fichier
+        while (fgets(chaine,40,fic)!=NULL)
+            {
+             // allocation des structures une par une :
+                *train=realloc(*train,sizeof(wagon)*(i+1));
+                //transfert des informations de la ligne dans chacun des champs de la structure :
+                sscanf(chaine,"%s %d %d ", (*train)[i].type, & (*train)[i].ident, & (*train)[i].data);
+                i++;
+            }
+        *index=i;
+    }
     fclose(fic);
 }
-else
-    fprintf(stderr,"pb chargerTrain ouverture fichier %s\n", nomfic);
-}
+
 /****************************************************/
 void libererTrain(int *index, wagon **train)
 {
-    if (*train !=NULL)
-    {
+
+    if(*train != NULL){
         free(*train);
-		*train=NULL;
-        *index=0;
+        *train = NULL ;
+        *index = 0;
     }
-    else
-         fprintf(stderr,"pb tableau à NULL dans libererTrain\n");
+
 
 }

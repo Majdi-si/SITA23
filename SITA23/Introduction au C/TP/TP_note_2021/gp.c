@@ -117,6 +117,7 @@ void sauverPilotes(int nbp,Pilote *pilotes,char * nomfichier){
     }
     fclose(fic); // N'oubliez pas de fermer le fichier
 }
+
 void liberer(int *nbp,Pilote **pilotes,int *nbc,Course **courses,int **tabclas){
     if (*pilotes != NULL)
     {

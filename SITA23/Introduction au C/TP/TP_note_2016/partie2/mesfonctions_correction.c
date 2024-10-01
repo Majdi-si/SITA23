@@ -46,14 +46,14 @@ return somme;
 
 }
 /**************************************************/
-/* ajoute à la fin du tableau un nouveau wagon : réallocation dynamique pour agrandir */
+/* ajoute ï¿½ la fin du tableau un nouveau wagon : rï¿½allocation dynamique pour agrandir */
 void ajouterWagonDyn(char *type,int ident, int data ,int *index,wagon **train)
 {
 	// le tableau a une taille actuelle de (*index) cases.
 	// on l'agrandit d'une case en plus :
     wagon * newtrain=realloc(*train,sizeof(wagon)*(*index + 1));
 
-if ( newtrain) // allocation réussie
+if ( newtrain) // allocation rï¿½ussie
 {
     *train=newtrain;
     strcpy((*train)[*index].type,type);
@@ -128,6 +128,6 @@ void libererTrain(int *index, wagon **train)
         *index=0;
     }
     else
-         fprintf(stderr,"pb tableau à NULL dans libererTrain\n");
+         fprintf(stderr,"pb tableau ï¿½ NULL dans libererTrain\n");
 
 }
