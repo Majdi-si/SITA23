@@ -3,104 +3,94 @@
 #include <string.h>
 
 /********************************************/
-/* affiche à l'écran l'ensemble des caractéristiques des wagons */
-void afficherTrain(int index,wagon * train)
+/* affiche Ã  l'Ã©cran l'ensemble des caractÃ©ristiques des wagons */
+void afficherTrain(int index, wagon *train)
 {
-    int i;
-    for (i=0;i<index ;i++)
-    {
-        if (strcmp(train[i].type, "VOITURE")==0)
-            printf("wagon %d : type=%s nbpax=%d\n",train[i].ident, train[i].type, (int)train[i].data);
-        else
-            if (strcmp(train[i].type, "LOCOMOTIVE")==0)
-                printf("wagon %d : type=%s \n",train[i].ident, train[i].type);
-            else
-                printf("wagon %d : type=%s charge=%d\n",train[i].ident, train[i].type, train[i].data);
+    for (int i = 0; i<index; i++){
+        if(strcmp(train[i].type,"LOCOMOTIVE")==0){
+            printf("Type : %s\n", train[i].type);
+            printf("Identification : %d\n\n", train[i].ident);
+        }
+        if(strcmp(train[i].type,"VOITURE")==0){
+            printf("Type : %s\n", train[i].type);
+            printf("Identification : %d\n", train[i].ident);
+            printf("Nombre de passagers : %d\n\n", train[i].data);
+        }
+        if(strcmp(train[i].type,"MARCHANDISE")==0){
+            printf("Type : %s\n", train[i].type);
+            printf("Identification : %d\n", train[i].ident);
+            printf("Charge : %d\n\n", train[i].data);
+        }
     }
+    
 }
 
 /**********************************************/
-/*  calcule la somme des pax de tous les wagons de type VOITURE */
+/* calcule la somme des pax de tous les wagons de type VOITURE */
 int calculerNbPaxTrain(int index, wagon *train)
 {
-int i,somme=0;
-    for (i=0;i<index ;i++)
-    {
-        if (strcmp(train[i].type , "VOITURE")==0)
+    int somme = 0;
+    for (int i = 0; i<index; i++){
+        if(strcmp(train[i].type,"VOITURE")==0){
             somme += train[i].data;
+        }
     }
-return somme;
+    return somme;
 }
 
 /****************************************************/
-/*  calcule la somme des charges totales des wagons de type MARCHANDISE */
+/* calcule la somme des charges totales des wagons de type MARCHANDISE */
 int calculerChargeTotalTrain(int index, wagon *train)
 {
-int i;
-int somme=0;
-    for (i=0;i<index ;i++)
-    {
-        if (strcmp(train[i].type, "MARCHANDISE")==0)
+    int somme = 0;
+    for (int i = 0; i<index; i++){
+        if(strcmp(train[i].type,"MARCHANDISE")==0){
             somme += train[i].data;
+        }
     }
-return somme;
+    return somme;
 }
 
 /**************************************************/
-/* ajoute à la fin du tableau un nouveau wagon */
-void ajouterWagon(char *type,int ident, int data ,int *index,wagon *train)
+/* ajoute Ã  la fin du tableau un nouveau wagon */
+void ajouterWagon(char *type, int ident, int data, int *index, wagon *train)
 {
-if ( *index < NBMAXWAGONS)
-{
-    strcpy(train[*index].type,type);
-    train[*index].ident=ident;
-    train[*index].data=data;
-    (*index) ++;
-}
-else
+    if (*index < NBMAXWAGONS){
+        train[*index].data = data;
+        train[*index].ident = ident;
+        strcpy(train[*index].type, type);
+        (*index)++;
+    }
+    else{
     fprintf(stderr,"tableau complet...ajouterwagon\n");
+    }
 }
 
 /**************************************************/
-/*  écrit dans le fichier l'ensemble des caractéristiques de chaque wagon du tableau */
-void sauverTrain(char * nomfic,int index, wagon *train)
+/* Ã©crit dans le fichier l'ensemble des caractÃ©ristiques de chaque wagon du tableau */
+void sauverTrain(char *nomfic, int index, wagon *train)
 {
-FILE *fic=fopen(nomfic,"w");
-if (fic)
-{
-    int i;
-    for (i=0;i<index ;i++)
-    {
-        if (strcmp( train[i].type,"LOCOMOTIVE")==0)
-            fprintf(fic,"%s %d\n",train[i].type, train[i].ident );
-        else
-            fprintf(fic,"%s %d %d\n",train[i].type, train[i].ident ,train[i].data );
-    }
-    fclose(fic);
-}
-else
-    fprintf(stderr,"pb sauverTrain ouverture fichier %s\n", nomfic);
+    // Function body removed
 }
 
 /**************************************************/
-/*   récupère du fichier l'ensemble des caractéristiques de chaque wagon pour remplir le tableau */
-void chargerTrain(char * nomfic, int *index, wagon * train)
+/* rÃ©cupÃ¨re du fichier l'ensemble des caractÃ©ristiques de chaque wagon pour remplir le tableau */
+void chargerTrain(char *nomfic, int *index, wagon *train)
 {
-FILE *fic=fopen(nomfic,"r");
-if (fic)
-{
-    int i=0;
-    wagon w;
-    while (fscanf (fic, "%s %d %d\n", w.type,&w.ident,&w.data ) >= 2)
-    {
-        if ( strcmp(w.type,"LOCOMOTIVE")==0)
-			w.data=0;
-		train[i]=w;
-        i++;
-    }
-    (*index)=i;
-    fclose(fic);
+    // Function body removed
 }
-else
-    fprintf(stderr,"pb chargerTrain ouverture fichier %s\n", nomfic);
+
+int main(){
+    wagon train[NBMAXWAGONS]; // NBMAXWAGONS Ã  dÃ©finir dans le fichier "mesfonctions.h"*
+    int index=1; // nombre de structures utilisÃ©s du tableau
+    train->data = 0;
+    train->ident = 0;
+    ajouterWagon("LOCOMOTIVE", 1, 0, &index, train);
+    ajouterWagon("VOITURE", 2, 100, &index, train);
+    ajouterWagon("MARCHANDISE", 3, 1000, &index, train);
+    afficherTrain(index, train);
+    printf("nb pax=%d\n", calculerNbPaxTrain(index, train));
+    printf("charge total=%d\n", calculerChargeTotalTrain(index, train));
+
+    return 0;
 }
