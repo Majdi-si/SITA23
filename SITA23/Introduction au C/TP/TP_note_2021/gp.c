@@ -15,7 +15,7 @@ void chargerPilotes(int * nbp, Pilote **pilotes,char * nomfichier){
              // allocation des structures une par une :
                 *pilotes=realloc(*pilotes,sizeof(Pilote)*(i+1));
                 //transfert des informations de la ligne dans chacun des champs de la structure :
-                sscanf(chaine,"%s %s %d", (*pilotes)[i].nom, (*pilotes)[i].prenom, & (*pilotes)[i].numero);
+                sscanf(chaine,"%s %s %d", (*pilotes)[i].nom, (*pilotes)[i].prenom, &(*pilotes)[i].numero);
                 (*pilotes)[i].nbPoints=0;
                 i++;
             }
