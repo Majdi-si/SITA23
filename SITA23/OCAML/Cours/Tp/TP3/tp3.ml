@@ -43,7 +43,30 @@ let rec derive expr var =
   | Oppose e1 -> Oppose (derive e1 var)
   | Inverse e1 -> Oppose (Produit (derive e1 var, Inverse (Produit (e1, e1))))
 
+let rec iter f expr =
+  match expr with
+  | Num x -> f (Num x)
+  | Var x -> f (Var x)
+  | Somme (e1, e2) -> f (Somme (iter f e1, iter f e2)) 
+  | Produit (e1, e2) -> f (Produit (iter f e1, iter f e2))
+  | Oppose e1 -> f (Oppose (iter f e1))
+  | Inverse e1 -> f (Inverse (iter f e1));;
 
+
+
+(* let eval2 subst expr = eval2 subst (iter subst expr);; *)
+
+
+let rec simplifie expr =
+  match expr with
+  | Somme (Num 0., e) -> simplifie e
+  | Somme (e, Num 0.) -> simplifie e
+  | Produit (Num 1., e) -> simplifie e
+  | Produit (e, Num 1.) -> simplifie e
+  | Produit (Num 0., e) -> Num 0.
+  | Produit (e, Num 0.) -> Num 0.
+  | Oppose (Num 0.) -> Num 0.
+  | _ -> expr
 
 let () = 
   (*Printf.printf "eval trois_x = %f\n" (eval trois_x);*)
@@ -51,4 +74,7 @@ let () =
   Printf.printf "eval e = %f\n" (eval e);*)
   Printf.printf "eval (Produit(Num 2., Num 3.)) = %f\n" (eval (Produit(Num 2., Num 3.)));
   Printf.printf "eval2 subst e = %f\n" (eval2 subst e);;
-  Printf.printf "derive e x = %f\n" (eval2 subst (derive e "x"));;
+  Printf.printf "derive e x = %f\n" (eval2 subst (derive e "x"));
+  Printf.printf "iter (fun x -> x) e = %f\n" (eval2 subst (iter (fun x -> x) e));
+  Printf.printf "simplifie e = %f\n" (eval2 subst (simplifie e)); (* Correction ici *)
+  
