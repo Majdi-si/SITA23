@@ -56,17 +56,28 @@ let rec iter f expr =
 
 (* let eval2 subst expr = eval2 subst (iter subst expr);; *)
 
+let simplifie_somme = fun e1 e2 ->
+  match e1, e2 with
+  | Num 0., e -> e
+  | e, Num 0. -> e
+  | Num e1, Num e2 -> Num (e1 +. e2)
+  | _, _ -> Somme (e1, e2)
 
-let rec simplifie expr =
-  match expr with
-  | Somme (Num 0., e) -> simplifie e
-  | Somme (e, Num 0.) -> simplifie e
-  | Produit (Num 1., e) -> simplifie e
-  | Produit (e, Num 1.) -> simplifie e
-  | Produit (Num 0., e) -> Num 0.
-  | Produit (e, Num 0.) -> Num 0.
-  | Oppose (Num 0.) -> Num 0.
-  | _ -> expr
+let simplifie_produit = fun e1 e2 ->
+  match e1, e2 with
+  | Num 0., _ -> Num 0.
+  | _, Num 0. -> Num 0.
+  | Num 1., e -> e
+  | e, Num 1. -> e
+  | Num e1, Num e2 -> Num (e1 *. e2)
+  | _, _ -> Produit (e1, e2)
+
+
+let simplifie expr = iter (fun e -> 
+  match e with
+  | Somme (e1, e2) -> simplifie_somme e1 e2
+  | Produit (e1, e2) -> simplifie_produit e1 e2
+  | _ -> e) expr;;
 
 let rec affiche expr =
   match expr with
@@ -86,14 +97,8 @@ let () =
   Printf.printf "eval2 subst e = %f\n" (eval2 subst e);;
   Printf.printf "derive e x = %f\n" (eval2 subst (derive e "x"));
   Printf.printf "iter (fun x -> x) e = %f\n" (eval2 subst (iter (fun x -> x) e));
-  Printf.printf "simplifie e = %f\n" (eval2 subst (simplifie e)); (* Correction ici *)
-  affiche e;;
+  Printf.printf "simplifie e = %f\n" (eval2 subst (simplifie e));
   Printf.printf "\n";;
+  affiche (simplifie (derive e "x"));;
   affiche (derive e "x");;
-  Printf.printf "\n";;
-  affiche (simplifie e);; (* Correction ici *)
-  Printf.printf "\n";;
-  affiche (derive (simplifie e) "x");; (* Correction ici *)
-  Printf.printf "\n";;
-  affiche (simplifie (Somme (Num 0., e)));;
-  
+
