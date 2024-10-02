@@ -68,6 +68,16 @@ let rec simplifie expr =
   | Oppose (Num 0.) -> Num 0.
   | _ -> expr
 
+let rec affiche expr =
+  match expr with
+  | Num x -> Printf.printf "%f" x
+  | Var x -> Printf.printf "%s" x
+  | Somme (e1, e2) -> Printf.printf "("; affiche e1; Printf.printf " + "; affiche e2; Printf.printf ")"
+  | Produit (e1, e2) -> Printf.printf "("; affiche e1; Printf.printf " * "; affiche e2; Printf.printf ")"
+  | Oppose e1 -> Printf.printf "-"; affiche e1
+  | Inverse e1 -> Printf.printf "1/"; affiche e1;;
+
+
 let () = 
   (*Printf.printf "eval trois_x = %f\n" (eval trois_x);*)
   (*Printf.printf "eval un_plus_trois_x = %f\n" (eval un_plus_trois_x);
@@ -77,4 +87,13 @@ let () =
   Printf.printf "derive e x = %f\n" (eval2 subst (derive e "x"));
   Printf.printf "iter (fun x -> x) e = %f\n" (eval2 subst (iter (fun x -> x) e));
   Printf.printf "simplifie e = %f\n" (eval2 subst (simplifie e)); (* Correction ici *)
+  affiche e;;
+  Printf.printf "\n";;
+  affiche (derive e "x");;
+  Printf.printf "\n";;
+  affiche (simplifie e);; (* Correction ici *)
+  Printf.printf "\n";;
+  affiche (derive (simplifie e) "x");; (* Correction ici *)
+  Printf.printf "\n";;
+  affiche (simplifie (Somme (Num 0., e)));;
   
