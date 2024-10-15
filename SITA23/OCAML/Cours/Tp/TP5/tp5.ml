@@ -36,7 +36,7 @@ let play env prog =
   let rec play_rec = function
     | Right e ->
         let angle = eval env e in
-        heading := (!heading + angle) mod 360
+        heading := (!heading + angle)
     | Forward e ->
         let distance = eval env e in
         let rad = float_of_int !heading *. (Float.pi /. 180.0) in
