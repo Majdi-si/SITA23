@@ -1,0 +1,68 @@
+ 09/09/19 14:14 >>>>> Assemblage du fichier U:/Desktop/TDSimKaaL/td2.asm
+
+  adresse	| code	| source
+  -------	| ----	| --------------------------
+       	|     	|                          
+   0000	| A02E	|  ..........JMP	DEBUT
+       	|     	|                          
+   000A	| 0001	|  NOMBRE1:..CST	1
+   000B	| 0002	|  NOMBRE2:..CST	2
+   000C	| 0003	|  NOMBRE3:..CST	3
+   000D	| 0003	|  MULT:.....CST	3
+   000E	| FFFF	|  RESULTAT1:VAR	?
+   000F	| FFFF	|  RESULTAT2:VAR	?
+   0010	| FFFF	|  RESULTAT3:VAR	?
+       	|     	|                          
+   0014	| FFFF	|  PILE:.....VAR	10?
+   0015	| FFFF	|  ..........?	
+   0016	| FFFF	|  ..........?	
+   0017	| FFFF	|  ..........?	
+   0018	| FFFF	|  ..........?	
+   0019	| FFFF	|  ..........?	
+   001A	| FFFF	|  ..........?	
+   001B	| FFFF	|  ..........?	
+   001C	| FFFF	|  ..........?	
+   001D	| FFFF	|  ..........?	
+   001E	| FFFF	|  FONDPILE:.VAR	?
+       	|     	|                          
+   0028	| C252	|  SOUS-PROG:PUSH	R2
+   0029	| B000	|  ..........LDR	R0,0
+   002A	| E010	|  BCLE:.....ADD	R0,R1R0
+   002B	| FE22	|  ..........DEC	R2
+   002C	| AD03	|  ..........JNZ	BCLE
+   002D	| C052	|  ..........POP	R2
+   002E	| C057	|  ..........RET
+   002F	| B01E	|  DEBUT:....LDR	R0,FONDPILE
+   0030	| D060	|  ..........LDR	SP,R0
+   0031	| 200D	|  ..........LDR	R2,[MULT]
+   0032	| 100A	|  ..........LDR	R1,[NOMBRE1]
+   0033	| A60C	|  ..........CALL	SOUS-PROG
+   0034	| 500E	|  ..........STR	[RESULTAT1],R0
+   0035	| 100B	|  ..........LDR	R1,[NOMBRE2]
+   0036	| A60F	|  ..........CALL	SOUS-PROG
+   0037	| 500F	|  ..........STR	[RESULTAT2],R0
+   0038	| 100C	|  ..........LDR	R1,[NOMBRE3]
+   0039	| A612	|  ..........CALL	SOUS-PROG
+   003A	| 5010	|  ..........STR	[RESULTAT3],R0
+   003B	| FEAC	|  FIN:......HLT
+
+__________________________________________________________________
+
+ Table des equivalences
+
+__________________________________________________________________
+
+ Table des symboles
+ NOMBRE1   000A
+ NOMBRE2   000B
+ NOMBRE3   000C
+ MULT      000D
+ RESULTAT1 000E
+ RESULTAT2 000F
+ RESULTAT3 0010
+ PILE      0014
+ FONDPILE  001E
+ SOUS-PROG 0028
+ BCLE      002A
+ DEBUT     002F
+ FIN       003B

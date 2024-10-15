@@ -1,0 +1,72 @@
+ 11/09/19 15:03 >>>>> Assemblage du fichier U:/Desktop/TDSimKaaL/td4_1.asm
+
+  adresse	| code	| source
+  -------	| ----	| --------------------------
+       	|     	|                          
+   0000	| A02B	|  ..........JMP	INIT
+       	|     	|                          
+   0002	| FFFF	|  AD_SPIT:..VAR	?
+       	|     	|                          
+   000A	| FFFF	|  VALEUR:...VAR	?
+       	|     	|                          
+   0014	| FFFF	|  PILE:.....VAR	10?
+   0015	| FFFF	|  ..........?	
+   0016	| FFFF	|  ..........?	
+   0017	| FFFF	|  ..........?	
+   0018	| FFFF	|  ..........?	
+   0019	| FFFF	|  ..........?	
+   001A	| FFFF	|  ..........?	
+   001B	| FFFF	|  ..........?	
+   001C	| FFFF	|  ..........?	
+   001D	| FFFF	|  ..........?	
+   001E	| FFFF	|  FOND_PILE:VAR	?
+       	|     	|                          
+   0028	| B000	|  IT_MAN:...LDR	R0,0
+   0029	| 500A	|  ..........STR	[VALEUR],R0
+   002A	| 5FF9	|  ..........STR	[PICUEOI],R0
+   002B	| C157	|  ..........IRET
+   002C	| B000	|  INIT:.....LDR	R0,0
+   002D	| D050	|  ..........LDR	FL,R0
+   002E	| B01E	|  ..........LDR	R0,FOND_PILE
+   002F	| D060	|  ..........LDR	SP,R0
+   0030	| B028	|  ..........LDR	R0,IT_MAN
+   0031	| 5002	|  ..........STR	[AD_SPIT],R0
+   0032	| B001	|  ..........LDR	R0,1
+   0033	| 5FF3	|  ..........STR	[PPMODE],R0
+   0034	| B005	|  ..........LDR	R0,MASQUE
+   0035	| 5FF8	|  ..........STR	[PICUMASK],R0
+   0036	| B001	|  ..........LDR	R0,1
+   0037	| D050	|  ..........LDR	FL,R0
+   0038	| B0FF	|  ..........LDR	R0,0XFF
+   0039	| D010	|  ..........LDR	R1,R0
+   003A	| B000	|  ..........LDR	R0,0
+   003B	| 500A	|  ..........STR	[VALEUR],R0
+   003C	| 000A	|  BCLE:.....LDR	R0,[VALEUR]
+   003D	| 5FF2	|  ..........STR	[PPPORTC],R0
+   003E	| FE10	|  ..........INC	R0
+   003F	| 500A	|  ..........STR	[VALEUR],R0
+   0040	| E901	|  ..........SUB	R4,R0R1
+   0041	| AD06	|  ..........JNZ	BCLE
+   0042	| A207	|  ..........JMP	BCLE
+   0043	| FEAC	|  ..........HLT
+
+__________________________________________________________________
+
+ Table des equivalences
+ PICUMASK  0FF8
+ PICUEOI   0FF9
+ PPMODE    0FF3
+ PPPORTC   0FF2
+ MASQUE    0005
+ MODE      0004
+
+__________________________________________________________________
+
+ Table des symboles
+ AD_SPIT   0002
+ VALEUR    000A
+ PILE      0014
+ FOND_PILE 001E
+ IT_MAN    0028
+ INIT      002C
+ BCLE      003C

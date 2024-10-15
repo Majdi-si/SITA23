@@ -2,9 +2,9 @@
 PICU_MASK   EQU 0xFF8
 PICU_EOI    EQU 0xFF9
 PP_MODE     EQU 0xFF3
-PP_PORT_A   EQU 0xFF0
-PP_PORT_B   EQU 0xFF1
-PP_PORT_C   EQU 0xFF2
+PP_PORT_A   EQU 0xFF0 ; Barrière
+PP_PORT_B   EQU 0xFF1 
+PP_PORT_C   EQU 0xFF2 ; Affichage sur 7 segments
 MASQUE      EQU 0x00
 PP_MODE_VAL EQU 3
 TIMER_MODE  EQU 0xFF6
@@ -24,7 +24,8 @@ vecteur_int_2: var ? ; Niveau d'interruption 3
 
 ; Section des données
 org 10
-chenille: VAR ?
+tseg: CST 0x3F,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x7,0x7f,0x6f
+barriere: VAR ?
 led: VAR ?
 direction: VAR ?
 
@@ -59,7 +60,7 @@ int_minuterie: push r0
                ldr r1, [direction]
                ldr r0, 1
                sub r0, r0r1
-               ldr r0, [chenille]
+               ldr r0, [barriere]
                ldr r2, r0           ; Sauvegarder la rotation
                ldr r1, r0           ; Sauvegarder la rotation
                ldr r0, 0x100        ; Masque 0100h
@@ -106,7 +107,7 @@ init: ldr r0, 0            ; CLI
       ldr r0, 1            ; Initialiser la direction à droite
       str [direction], r0
       ldr r0, 5
-      str [chenille], r0
+      str [barriere], r0
       ldr r0, 0x55         ; Tester la minuterie
       str [led], r0
       ldr r0, 2            ; Initialiser la minuterie en mode périodique
@@ -116,9 +117,18 @@ init: ldr r0, 0            ; CLI
       ldr r0, 1            ; STI
       ldr fl, r0
       ldr r0, [PP_PORT_A]
-      str [chenille], r0
+      str [barriere], r0
+      ldr r0,tseg ; Adresse de base du tableau
+      ldr r1,r0
+      ldr r0,9 ; Offset dans le tableau
+      add r4,r1r0 ; Calcul de l’adresse du ’2’
+      ldr r2,[r4] ; Code du ’2’ : 0x5b
+      str [PP_PORT_C],r2 ; Affichage sur 7 segments
+      
+      ldr r0, 255        ; Afficher toutes les LEDs sur le port A
+      str [PP_PORT_A], r0
 
-boucle: ldr r0, [chenille]
+boucle: ldr r0, [barriere]
         str [PP_PORT_B], r0
         jmp boucle
         hlt

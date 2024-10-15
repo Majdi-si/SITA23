@@ -107,7 +107,6 @@ Table des Symboles :
 PicuMask             --> 0xFF8
 PicuEOI              --> 0xFF9
 PPMode               --> 0xFF3
-PPPortC              --> 0xFF2
 masque               --> 0x04
 mode                 --> 04
 SModeEtat            --> 0xFF5
@@ -115,9 +114,9 @@ SRxTx                --> 0xFF4
 
 Informations de creation issues de la compilation :
 ----------------------------------------------------
-IP_Address                 :10.1.120.195
+IP_Address                 :10.1.122.210
 Host_Name                  :Majdikali
-TAG_UID pour fichier 'asm' :2a87476fc9f7149eed9fa1772649e70728e7e591a353ebf0bba48d27102ea3c4--date :Thu, 26 Sep 2024 15:13:33.0652387--taille :2784
-TAG_UID pour fichier 'sim' :6342236526527d859901fab9624c3d04bc1cd4bebc8aca2c48b650249ff55b6f--date :Thu, 26 Sep 2024 15:13:37.245381--taille :414
-TAG_UID pour fichier 'lst' :6937a83d33ec99c444eba0c20254a24cf74ade9e31de1db1ec9f3f681eda5b8c--date :Thu, 26 Sep 2024 15:13:37.249381--taille :8202
+TAG_UID pour fichier 'asm' :c19e702596bac052c9fd498a6075d0f7bd43fc556e1789aaa9158ea75a4381b4--date :Mon, 30 Sep 2024 11:26:56.581175--taille :2833
+TAG_UID pour fichier 'sim' :e037492bf7b21b04236f30bf88c282f7000b4b06e308b4de8049c7be883138e3--date :Tue, 15 Oct 2024 13:50:44.6737678--taille :414
+TAG_UID pour fichier 'lst' :74db1bd86caf6001ff0c87b8f5643b8c45ce82e4379be2fb20eca9da7b22a40f--date :Tue, 15 Oct 2024 13:50:44.6737678--taille :8171
 ----------------------------------------------------

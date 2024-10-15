@@ -1,0 +1,47 @@
+ 04/09/19 15:42 >>>>> Assemblage du fichier U:/Desktop/TDSimKaaL/td1.asm
+
+  adresse	| code	| source
+  -------	| ----	| --------------------------
+       	|     	|                          
+   0000	| A013	|  ..........JMP	DEBUT
+       	|     	|                          
+   0008	| 000A	|  TAILLE:...CST	10
+   0009	| FFFF	|  TABLEAU:..VAR	11?
+   000A	| FFFF	|  ..........?	
+   000B	| FFFF	|  ..........?	
+   000C	| FFFF	|  ..........?	
+   000D	| FFFF	|  ..........?	
+   000E	| FFFF	|  ..........?	
+   000F	| FFFF	|  ..........?	
+   0010	| FFFF	|  ..........?	
+   0011	| FFFF	|  ..........?	
+   0012	| FFFF	|  ..........?	
+   0013	| FFFF	|  ..........?	
+       	|     	|                          
+   0014	| 0008	|  DEBUT:....LDR	R0,[TAILLE]
+   0015	| D010	|  ..........LDR	R1,R0
+   0016	| B000	|  ..........LDR	R0,VAL_DEBUT
+   0017	| D020	|  ..........LDR	R2,R0
+   0018	| B009	|  ..........LDR	R0,TABLEAU
+   0019	| D040	|  ..........LDR	R4,R0
+   001A	| C242	|  BCLE:.....STR	[R4],R2
+   001B	| FE12	|  ..........INC	R2
+   001C	| FE14	|  ..........INC	R4
+   001D	| FE21	|  ..........DEC	R1
+   001E	| AD05	|  ..........JNZ	BCLE
+   001F	| FEAC	|  FIN:......HLT
+
+__________________________________________________________________
+
+ Table des equivalences
+ AD_DEBUT  001E
+ VAL_DEBUT 0000
+
+__________________________________________________________________
+
+ Table des symboles
+ TAILLE    0008
+ TABLEAU   0009
+ DEBUT     0014
+ BCLE      001A
+ FIN       001F
