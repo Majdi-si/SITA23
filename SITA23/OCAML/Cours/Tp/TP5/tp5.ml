@@ -7,6 +7,7 @@ type expression =
 
 let expr = Division (Entier 360, Variable "ne")
 
+
 type instruction = 
   | Right of expression
   | Forward of expression
@@ -38,14 +39,14 @@ let play env prog =
         heading := (!heading + angle) mod 360
     | Forward e ->
         let distance = eval env e in
-        let rad = float_of_int !heading *. (3.141592653589793 /. 180.0) in
+        let rad = float_of_int !heading *. (Float.pi /. 180.0) in
         let dx = int_of_float (float_of_int distance *. cos rad) in
         let dy = int_of_float (float_of_int distance *. sin rad) in
-        rlineto dx dy
-    | Repeat (e, instrs) ->
+        Graphics.rlineto dx dy
+    | Repeat (e, instr) ->
         let count = eval env e in
         for _ = 1 to count do
-          List.iter play_rec instrs
+          play_rec instr
         done
     | Bloc instrs ->
         List.iter play_rec instrs
