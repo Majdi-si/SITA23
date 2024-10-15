@@ -6,7 +6,7 @@ PP_PORT_A   EQU 0xFF0 ; Barrière
 PP_PORT_B   EQU 0xFF1 
 PP_PORT_C   EQU 0xFF2 ; Affichage sur 7 segments
 MASQUE      EQU 0x00
-PP_MODE_VAL EQU 3
+PP_MODE_VAL EQU 7
 TIMER_MODE  EQU 0xFF6
 TIMER_BUFF  EQU 0xFF7
 SERIAL_MODE EQU 0xFF5
@@ -125,7 +125,7 @@ init: ldr r0, 0            ; CLI
       ldr r2,[r4] ; Code du ’2’ : 0x5b
       str [PP_PORT_C],r2 ; Affichage sur 7 segments
       
-      ldr r0, 255        ; Afficher toutes les LEDs sur le port A
+      ldr r0, 0xFF        ; Afficher toutes les LEDs sur le port A
       str [PP_PORT_A], r0
 
 boucle: ldr r0, [barriere]

@@ -132,7 +132,7 @@ Fichier 'LST' issue du fichier 'ASM' :
 |   007C   |  5002  |   100  |                      | str [vecteur_int_1], r0 | I      |
 |   007D   |  B055  |   101  |                      | ldr r0, int_minuterie | I      |
 |   007E   |  5003  |   102  |                      | str [vecteur_int_2], r0 | I      |
-|   007F   |  B003  |   103  |                      | ldr r0, PP_MODE_VAL  | I      |
+|   007F   |  B007  |   103  |                      | ldr r0, PP_MODE_VAL  | I      |
 |   0080   |  5FF3  |   104  |                      | str [PP_MODE], r0    | I      |
 |   0081   |  B000  |   105  |                      | ldr r0, MASQUE       | I      |
 |   0082   |  5FF8  |   106  |                      | str [PICU_MASK], r0  | I      |
@@ -156,7 +156,7 @@ Fichier 'LST' issue du fichier 'ASM' :
 |   0094   |  E410  |   124  |                      | add r4,r1r0          | I      |
 |   0095   |  C042  |   125  |                      | ldr r2,[r4]          | I      |
 |   0096   |  7FF2  |   126  |                      | str [PP_PORT_C],r2   | I      |
-|   0097   |  B0FF  |   128  |                      | ldr r0, 255          | I      |
+|   0097   |  B0FF  |   128  |                      | ldr r0, 0xFF         | I      |
 |   0098   |  5FF0  |   129  |                      | str [PP_PORT_A], r0  | I      |
 |   0099   |  0014  |   131  |               boucle | ldr r0, [barriere]   | I      |
 |   009A   |  5FF1  |   132  |                      | str [PP_PORT_B], r0  | I      |
@@ -191,7 +191,7 @@ PP_PORT_A            --> 0xFF0
 PP_PORT_B            --> 0xFF1
 PP_PORT_C            --> 0xFF2
 MASQUE               --> 0x00
-PP_MODE_VAL          --> 3
+PP_MODE_VAL          --> 7
 TIMER_MODE           --> 0xFF6
 TIMER_BUFF           --> 0xFF7
 SERIAL_MODE          --> 0xFF5
@@ -201,7 +201,7 @@ Informations de creation issues de la compilation :
 ----------------------------------------------------
 IP_Address                 :10.1.122.210
 Host_Name                  :Majdikali
-TAG_UID pour fichier 'asm' :54969503e9641cf3ce4a6ea807c796a36c1cbecc86f4bdbcfe06b3aace59f802--date :Tue, 15 Oct 2024 14:14:36.7263348--taille :4132
-TAG_UID pour fichier 'sim' :05277cab2fedcae9ec503505e9852f32ca39574324c0931370cff24b2fe06132--date :Tue, 15 Oct 2024 14:14:42.186409--taille :784
-TAG_UID pour fichier 'lst' :157f980b912ae73715d04a42db8522ccd75d3496a8d9ae226ce0105f626e3afb--date :Tue, 15 Oct 2024 14:14:42.186409--taille :14891
+TAG_UID pour fichier 'asm' :886d52e87a4c314a76bc8fc2b338022f2812d91835c7f11a04b2ebb1eec96ce4--date :Tue, 15 Oct 2024 14:55:00.7368717--taille :4133
+TAG_UID pour fichier 'sim' :88c22a48b4e54e90454bfcaaf7abed13db37d39fd16718cef7c0d069125d0028--date :Tue, 15 Oct 2024 14:55:06.960924--taille :784
+TAG_UID pour fichier 'lst' :dfa169bae3c3d0bc7a8c20686f2ee3ba33260043b028745a9b6a4e046b26b76b--date :Tue, 15 Oct 2024 14:55:06.960924--taille :14891
 ----------------------------------------------------
