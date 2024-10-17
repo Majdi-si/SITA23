@@ -10,7 +10,7 @@ int main(void) {
        - Le fichier est créé s'il n'existe pas (flag O_CREAT).
        - Le curseur de position courante dans le fichier est placé à la fin (flag O_APPEND). */
 
-    fd = open("toto1-1.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
+    fd = open("toto1-1.txt", O_WRONLY | O_CREAT | O_APPEND, 0600);
     if (fd == -1) {
         perror("Erreur lors de l'ouverture du fichier");
         return 1;
