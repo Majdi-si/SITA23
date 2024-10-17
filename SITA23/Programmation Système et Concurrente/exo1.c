@@ -17,8 +17,8 @@ if (fd == -1) {
 }
 
 /* Ecriture de la chaine de caractere " il fait beau !\n" dans le fichier toto.txt */
-taille = strlen(" il fait beau !\n");
-nbEcr = write(fd, " il fait beau !\n", taille);
+taille = strlen(" il fait pas beau !\n");
+nbEcr = write(fd, " il fait pas beau !\n", taille);
 if (nbEcr == -1) {
     perror("Erreur lors de l'écriture dans le fichier");
     close(fd);
