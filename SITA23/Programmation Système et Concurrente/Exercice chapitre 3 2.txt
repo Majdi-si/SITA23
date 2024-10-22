@@ -1,0 +1,8 @@
+Exercice chapitre 3-2 :
+
+T1 : acquérir données du capteur 1 en boucle et stocke ça dans 1 file (! synchronisation si pleine)
+T2 : acquérir données du capteur 2 en boucle et stocke ça dans 1 file (! synchronisation si pleine) 
+T3 : stocke dans le disque en boucle en lisant dans la file (! synchronisation si vide)
+
+La file d'attente serait en variable globale
+
