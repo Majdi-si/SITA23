@@ -23,7 +23,7 @@ void programme(char* nomfic_source, char* nomfic_dest) {
     }
 
     char buffer[1024];
-    ssize_t nbLus;
+    int nbLus;
 
     // Lire le fichier source, transformer les caractères et écrire dans le fichier de destination
     while ((nbLus = read(fd_source, buffer, sizeof(buffer))) > 0) {
