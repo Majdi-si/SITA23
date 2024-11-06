@@ -1,19 +1,22 @@
-type task = int * int * int
+type task = {
+    id : int;
+    start: int;
+    endt : int;
+}
 
-let fprint_task out_channel (a, b, c) =
-  Printf.fprintf out_channel "%d %d %d" a b c
+let fprint_task out_channel task =
+  Printf.fprintf out_channel "%d %d %d" task.id task.start task.endt
 
-let make = fun a b c -> (a, b, c)
+let make = fun id start endt -> {id; start; endt}
 
-module TS = struct
-  module S = Set.Make(struct
-    type t = task
-    let compare (id1, _, _) (id2, _, _) = compare id1 id2
-  end)
-  include S
-  type t = S.t
-  let fold = S.fold
-end
+module TS = Set.Make(struct
+  type t = task
+  let compare task1 task2 = compare task1.id task2.id
+end)
+
+type t = TS.t
+let fold = TS.fold
+
 
 (* begin provided *)
 let input_line_option = fun chin ->
