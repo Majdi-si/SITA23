@@ -26,10 +26,10 @@ void* server_task(void* arg) {
         strftime(response, sizeof(response), "%d/%m/%y %I:%M:%S %p", time_info);
 
         // Ajout de l'horodatage dans le buffer
-
+        pthread_mutex_lock(&buffer_mutex);
         strcat(buffer, " ");
         strcat(buffer, response);  // Ajout de l'horodatage au message
-
+        pthread_mutex_unlock(&buffer_mutex);
 
         sem_post(&sem_response);  // Signale au client que la réponse est prête
     }
@@ -43,16 +43,17 @@ void* client_task(void* arg) {
     for (int i = 0; i < NUM_ITERATIONS; i++) {
         // Placer le message dans le buffer
         pthread_mutex_lock(&buffer_mutex);
-
-        sprintf(message, "Client %d request %d", client_id, i+1);
+        sprintf(buffer, "Client %d request %d", client_id, i+1);  // Initialiser le buffer avec le message du client
+        pthread_mutex_unlock(&buffer_mutex);
 
         sem_post(&sem_request);  // Demande au serveur de traiter la requête
 
         sem_wait(&sem_response);  // Attente de la réponse du serveur
 
+        pthread_mutex_lock(&buffer_mutex);
         printf("Client %d received: %s\n", client_id, buffer);  // Affiche la réponse du serveur
+        buffer[0] = '\0';  // Réinitialiser le buffer
         pthread_mutex_unlock(&buffer_mutex);
-
 
         sleep(1);  // Simuler un délai entre les requêtes
     }
@@ -64,15 +65,22 @@ int main() {
     sem_init(&sem_response, 0, 0);
 
     pthread_t server_thread;
-    pthread_t client_threads[5];
+    pthread_t client_threads[2];
+
+    pthread_mutex_init(&buffer_mutex, NULL);
 
     pthread_create(&server_thread, NULL, server_task, NULL);
     pthread_create(&client_threads[0], NULL, client_task, (void*)&(int){1});
     pthread_create(&client_threads[1], NULL, client_task, (void*)&(int){2});
 
-    pthread_join(server_thread, NULL);
     pthread_join(client_threads[0], NULL);
     pthread_join(client_threads[1], NULL);
+
+    pthread_cancel(server_thread);
+
+    pthread_mutex_destroy(&buffer_mutex);
+    sem_destroy(&sem_request);
+    sem_destroy(&sem_response);
 
     return 0;
 }
