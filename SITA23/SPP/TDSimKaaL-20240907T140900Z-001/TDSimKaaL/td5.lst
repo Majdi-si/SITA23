@@ -1,0 +1,97 @@
+ 17/09/19 17:15 >>>>> Assemblage du fichier U:/Desktop/TDSimKaaL/td5.asm
+
+  adresse	| code	| source
+  -------	| ----	| --------------------------
+       	|     	|                          
+   0000	| A035	|  ..........JMP	INIT
+       	|     	|                          
+   0001	| FFFF	|  AD_SPIT1:.VAR	?
+   0002	| FFFF	|  AD_SPIT2:.VAR	?
+       	|     	|                          
+   000A	| 0053	|  STOP:.....CST	83
+   000B	| FFFF	|  CHENI:....VAR	?
+       	|     	|                          
+   0014	| FFFF	|  PILE:.....VAR	10?
+   0015	| FFFF	|  ..........?	
+   0016	| FFFF	|  ..........?	
+   0017	| FFFF	|  ..........?	
+   0018	| FFFF	|  ..........?	
+   0019	| FFFF	|  ..........?	
+   001A	| FFFF	|  ..........?	
+   001B	| FFFF	|  ..........?	
+   001C	| FFFF	|  ..........?	
+   001D	| FFFF	|  ..........?	
+   001E	| FFFF	|  FOND_PILE:VAR	?
+       	|     	|                          
+   0028	| C250	|  IT_CLAV:..PUSH	R0
+   0029	| C251	|  ..........PUSH	R1
+   002A	| 000A	|  ..........LDR	R0,[STOP]
+   002B	| D010	|  ..........LDR	R1,R0
+   002C	| 0FF4	|  ..........LDR	R0,[RX]
+   002D	| E601	|  ..........SUB	R1,R0R1
+   002E	| AE22	|  ..........JZ	FIN
+   002F	| 5FF4	|  ..........STR	[TX],R0
+   0030	| B000	|  ..........LDR	R0,0
+   0031	| 5FF9	|  ..........STR	[PICUEOI],R0
+   0032	| C051	|  ..........POP	R1
+   0033	| C050	|  ..........POP	R0
+   0034	| C157	|  ..........IRET
+   0035	| A01B	|  IT_MAN:...JMP	FIN
+   0036	| B000	|  INIT:.....LDR	R0,0
+   0037	| D050	|  ..........LDR	FL,R0
+   0038	| B01E	|  ..........LDR	R0,FOND_PILE
+   0039	| D060	|  ..........LDR	SP,R0
+   003A	| B028	|  ..........LDR	R0,IT_CLAV
+   003B	| 5001	|  ..........STR	[AD_SPIT1],R0
+   003C	| B035	|  ..........LDR	R0,IT_MAN
+   003D	| 5002	|  ..........STR	[AD_SPIT2],R0
+   003E	| B007	|  ..........LDR	R0,MODE
+   003F	| 5FF5	|  ..........STR	[SSMODE],R0
+   0040	| B001	|  ..........LDR	R0,1
+   0041	| 5FF3	|  ..........STR	[PPMODE],R0
+   0042	| B004	|  ..........LDR	R0,MASQUE
+   0043	| 5FF8	|  ..........STR	[PICUMASK],R0
+   0044	| B001	|  ..........LDR	R0,1
+   0045	| D050	|  ..........LDR	FL,R0
+   0046	| B100	|  ..........LDR	R0,0X100
+   0047	| D010	|  ..........LDR	R1,R0
+   0048	| B001	|  BCINT:....LDR	R0,1
+   0049	| 500B	|  ..........STR	[CHENI],R0
+   004A	| 000B	|  BCLE:.....LDR	R0,[CHENI]
+   004B	| 5FF2	|  ..........STR	[PPPORTC],R0
+   004C	| FC10	|  ..........ROL	R0,1
+   004D	| 500B	|  ..........STR	[CHENI],R0
+   004E	| F001	|  ..........AND	R0,R0R1
+   004F	| AF06	|  ..........JZ	BCLE
+   0050	| A209	|  ..........JMP	BCINT
+   0051	| FEAC	|  FIN:......HLT
+
+__________________________________________________________________
+
+ Table des equivalences
+ PICUMASK  0FF8
+ PICUEOI   0FF9
+ TX        0FF4
+ RX        0FF4
+ SSMODE    0FF5
+ ETAT      0FF5
+ PPMODE    0FF3
+ PPPORTC   0FF2
+ MASQUE    0004
+ MODE      0007
+
+__________________________________________________________________
+
+ Table des symboles
+ AD_SPIT1  0001
+ AD_SPIT2  0002
+ STOP      000A
+ CHENI     000B
+ PILE      0014
+ FOND_PILE 001E
+ IT_CLAV   0028
+ IT_MAN    0035
+ INIT      0036
+ BCINT     0048
+ BCLE      004A
+ FIN       0051

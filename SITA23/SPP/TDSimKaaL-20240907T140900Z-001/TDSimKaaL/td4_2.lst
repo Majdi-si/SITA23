@@ -1,0 +1,72 @@
+ 17/09/19 16:44 >>>>> Assemblage du fichier U:/Desktop/TDSimKaaL/td4_2.asm
+
+  adresse	| code	| source
+  -------	| ----	| --------------------------
+       	|     	|                          
+   0000	| A02D	|  ..........JMP	INIT
+       	|     	|                          
+   0001	| FFFF	|  AD_SPIT1:.VAR	?
+   0002	| FFFF	|  AD_SPIT2:.VAR	?
+       	|     	|                          
+   000A	| FFFF	|  CHAR:.....VAR	?
+       	|     	|                          
+   0014	| FFFF	|  PILE:.....VAR	10?
+   0015	| FFFF	|  ..........?	
+   0016	| FFFF	|  ..........?	
+   0017	| FFFF	|  ..........?	
+   0018	| FFFF	|  ..........?	
+   0019	| FFFF	|  ..........?	
+   001A	| FFFF	|  ..........?	
+   001B	| FFFF	|  ..........?	
+   001C	| FFFF	|  ..........?	
+   001D	| FFFF	|  ..........?	
+   001E	| FFFF	|  FOND_PILE:VAR	?
+       	|     	|                          
+   0028	| 0FF4	|  IT_CLAV:..LDR	R0,[RX]
+   0029	| 5FF4	|  ..........STR	[TX],R0
+   002A	| B000	|  ..........LDR	R0,0
+   002B	| 5FF9	|  ..........STR	[PICUEOI],R0
+   002C	| C157	|  ..........IRET
+   002D	| A00F	|  IT_MAN:...JMP	FIN
+   002E	| B000	|  INIT:.....LDR	R0,0
+   002F	| D050	|  ..........LDR	FL,R0
+   0030	| B01E	|  ..........LDR	R0,FOND_PILE
+   0031	| D060	|  ..........LDR	SP,R0
+   0032	| B028	|  ..........LDR	R0,IT_CLAV
+   0033	| 5001	|  ..........STR	[AD_SPIT1],R0
+   0034	| B02D	|  ..........LDR	R0,IT_MAN
+   0035	| 5002	|  ..........STR	[AD_SPIT2],R0
+   0036	| B007	|  ..........LDR	R0,MODE
+   0037	| 5FF5	|  ..........STR	[PPMODE],R0
+   0038	| B004	|  ..........LDR	R0,MASQUE
+   0039	| 5FF8	|  ..........STR	[PICUMASK],R0
+   003A	| B001	|  ..........LDR	R0,1
+   003B	| D050	|  ..........LDR	FL,R0
+   003C	| A201	|  BCLE:.....JMP	BCLE
+   003D	| FEAC	|  FIN:......HLT
+
+__________________________________________________________________
+
+ Table des equivalences
+ PICUMASK  0FF8
+ PICUEOI   0FF9
+ TX        0FF4
+ RX        0FF4
+ PPMODE    0FF5
+ ETAT      0FF5
+ MASQUE    0004
+ MODE      0007
+
+__________________________________________________________________
+
+ Table des symboles
+ AD_SPIT1  0001
+ AD_SPIT2  0002
+ CHAR      000A
+ PILE      0014
+ FOND_PILE 001E
+ IT_CLAV   0028
+ IT_MAN    002D
+ INIT      002E
+ BCLE      003C
+ FIN       003D

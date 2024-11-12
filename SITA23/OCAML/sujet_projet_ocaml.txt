@@ -1,0 +1,17 @@
+Sujet 1 : gérer l'achememinement d'un aéroport -> faire des graphes avec les taxiway/intersections + implémenter un algorithme de parcours de graphe. Faire une partie graphique + partie traitement de données
+
+Sujet 2 : Gestion des départs et prévoir de potentielles congestions -> file d'attente
+
+Sujet 3 : Résolution de conflits avec drones -> choisir des vitesses tq chaque drone reste séparé
+
+Sujet 4 : Résolution de conflits -> faire tourner les avions d'un angle alpha d'un temps t0 à t1: utilisation algo par évolution différentielle (utilise un peu de l'aléatoire)
+
+Sujet 5 : Jeu Blokus -> commencer avec 2 joueurs : implémenter algo min/max + arbre
+
+Sujet 6 : Regex -> non
+
+Sujet 7 : Allouer des niveaux de vol : données en entrée : plans de vol + détection de conflit -> faire 2/3 résolution qui répondent à ce sujet
+
+Sujet 8 : générer des grilles à partir d'un dictionnaire : analyser grille -> utilisation backtracking 
+
+Sujet 9 : non

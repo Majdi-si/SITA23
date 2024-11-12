@@ -1,0 +1,34 @@
+ 11/09/19 14:06 >>>>> Assemblage du fichier U:/Desktop/TDSimKaaL/td4.asm
+
+  adresse	| code	| source
+  -------	| ----	| --------------------------
+       	|     	|                          
+   0000	| A01D	|  ..........JMP	DEBUT
+       	|     	|                          
+   000A	| FFFF	|  VARIABLE:.VAR	?
+       	|     	|                          
+   001E	| B001	|  DEBUT:....LDR	R0,1
+   001F	| 5FF3	|  ..........STR	[MODE],R0
+   0020	| B0FF	|  BINF:.....LDR	R0,0XFF
+   0021	| D020	|  ..........LDR	R2,R0
+   0022	| 100A	|  ..........LDR	R1,[VARIABLE]
+   0023	| FE11	|  BCLE:.....INC	R1
+   0024	| 600A	|  ..........STR	[VARIABLE],R1
+   0025	| 6FF2	|  ..........STR	[PORTC],R1
+   0026	| FE22	|  ..........DEC	R2
+   0027	| AD05	|  ..........JNZ	BCLE
+   0028	| A209	|  ..........JMP	BINF
+
+__________________________________________________________________
+
+ Table des equivalences
+ PORTC     0FF2
+ MODE      0FF3
+
+__________________________________________________________________
+
+ Table des symboles
+ VARIABLE  000A
+ DEBUT     001E
+ BINF      0020
+ BCLE      0023

@@ -3,6 +3,7 @@
 
 // longueur max du genome :
 #define NBMAX 200000
+#endif // MESFONCTIONS_H_INCLUDED
 
 typedef struct {
     char data[NBMAX]; // liste des caract�res du g�nome
@@ -20,4 +21,4 @@ void ajouterGene(Genome **g, char *gene, int position);
 void sauverGenome(char *ch, Genome g);
 void libererGenome(Genome **g);
 
-#endif // MESFONCTIONS_H_INCLUDED
+
