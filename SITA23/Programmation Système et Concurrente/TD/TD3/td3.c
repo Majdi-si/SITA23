@@ -65,24 +65,26 @@ void* tache_capteur(void* arg) {
 }
 
 void* tache_journal(void* arg) {
-    FILE* fichier = fopen("log.txt", "w");
-    if (fichier == NULL) {
-        perror("Erreur lors de l'ouverture du fichier journal");
-        pthread_exit(NULL);
-    }
-
     while (1) {
         pthread_mutex_lock(&mutex_buffer); // Verrouiller le mutex
         while (!buffer_pret) { // Attendre que le buffer soit prêt
             pthread_cond_wait(&cond_buffer, &mutex_buffer);
         }
+
+        FILE* fichier = fopen("log.txt", "a"); // Ouvrir le fichier journal en mode append
+        if (fichier == NULL) {
+            perror("Erreur lors de l'ouverture du fichier journal");
+            pthread_mutex_unlock(&mutex_buffer);
+            pthread_exit(NULL);
+        }
+
         fputs(buffer, fichier); // Écrire le contenu du buffer dans le fichier journal
-        fflush(fichier); // Forcer l'écriture sur le disque
+        fclose(fichier); // Fermer le fichier pour forcer l'écriture sur le disque
+
         buffer_pret = 0; // Indiquer que le buffer est vide
         pthread_cond_signal(&cond_buffer); // Signaler que le buffer est vide
         pthread_mutex_unlock(&mutex_buffer); // Déverrouiller le mutex
     }
 
-    fclose(fichier);
     pthread_exit(NULL);
 }
