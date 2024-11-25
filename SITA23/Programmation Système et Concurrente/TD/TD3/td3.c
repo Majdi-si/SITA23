@@ -4,13 +4,16 @@
 #include <unistd.h>
 #include <string.h>
 
-#define TAILLE_BUFFER 256
+#define TAILLE_BUFFER 30
+#define LONGUEUR_MESSAGE 100
 
 // Buffer partagé et primitives de synchronisation
-char buffer[TAILLE_BUFFER]; // Buffer partagé entre les threads
+char buffer[TAILLE_BUFFER][LONGUEUR_MESSAGE]; // Buffer partagé entre les threads
 pthread_mutex_t mutex_buffer = PTHREAD_MUTEX_INITIALIZER; // Mutex pour protéger l'accès au buffer
 pthread_cond_t cond_buffer = PTHREAD_COND_INITIALIZER; // Condition pour signaler les changements d'état du buffer
-int buffer_pret = 0; // Indicateur de l'état du buffer (0 = vide, 1 = prêt)
+int buffer_pret[TAILLE_BUFFER] = {0}; // Indicateur de l'état du buffer (0 = vide, 1 = prêt)
+int index_ecriture = 0; // Index d'écriture dans le buffer
+int index_lecture = 0; // Index de lecture dans le buffer
 
 // Prototypes de fonctions
 void* tache_capteur(void* arg);
@@ -43,17 +46,18 @@ void* tache_capteur(void* arg) {
         pthread_exit(NULL);
     }
 
-    char valeur[100];
+    char valeur[LONGUEUR_MESSAGE];
     while (fgets(valeur, sizeof(valeur), fichier) != NULL) { // Lire les valeurs du fichier
-        char message[TAILLE_BUFFER];
+        char message[LONGUEUR_MESSAGE];
         sprintf(message, "Capteur %d : %s", id_capteur, valeur); // Formater le message
 
         pthread_mutex_lock(&mutex_buffer); // Verrouiller le mutex
-        while (buffer_pret) { // Attendre que le buffer soit vide
+        while (buffer_pret[index_ecriture]) { // Attendre que l'emplacement du buffer soit vide
             pthread_cond_wait(&cond_buffer, &mutex_buffer);
         }
-        strncpy(buffer, message, TAILLE_BUFFER); // Copier le message dans le buffer
-        buffer_pret = 1; // Indiquer que le buffer est prêt
+        strncpy(buffer[index_ecriture], message, LONGUEUR_MESSAGE); // Copier le message dans le buffer
+        buffer_pret[index_ecriture] = 1; // Indiquer que l'emplacement du buffer est prêt
+        index_ecriture = (index_ecriture + 1) % TAILLE_BUFFER; // Avancer l'index d'écriture
         pthread_cond_signal(&cond_buffer); // Signaler que le buffer est prêt
         pthread_mutex_unlock(&mutex_buffer); // Déverrouiller le mutex
 
@@ -67,7 +71,7 @@ void* tache_capteur(void* arg) {
 void* tache_journal(void* arg) {
     while (1) {
         pthread_mutex_lock(&mutex_buffer); // Verrouiller le mutex
-        while (!buffer_pret) { // Attendre que le buffer soit prêt
+        while (!buffer_pret[index_lecture]) { // Attendre que l'emplacement du buffer soit prêt
             pthread_cond_wait(&cond_buffer, &mutex_buffer);
         }
 
@@ -78,10 +82,11 @@ void* tache_journal(void* arg) {
             pthread_exit(NULL);
         }
 
-        fputs(buffer, fichier); // Écrire le contenu du buffer dans le fichier journal
+        fputs(buffer[index_lecture], fichier); // Écrire le contenu du buffer dans le fichier journal
         fclose(fichier); // Fermer le fichier pour forcer l'écriture sur le disque
 
-        buffer_pret = 0; // Indiquer que le buffer est vide
+        buffer_pret[index_lecture] = 0; // Indiquer que l'emplacement du buffer est vide
+        index_lecture = (index_lecture + 1) % TAILLE_BUFFER; // Avancer l'index de lecture
         pthread_cond_signal(&cond_buffer); // Signaler que le buffer est vide
         pthread_mutex_unlock(&mutex_buffer); // Déverrouiller le mutex
     }
