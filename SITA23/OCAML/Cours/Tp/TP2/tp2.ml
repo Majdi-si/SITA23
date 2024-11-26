@@ -17,11 +17,11 @@ let sigma_terminal_inc f a b i =
   aux a 0 i
 
 let sigma_terminal_fonc f a b s =
-  let rec aux a acc s =
+  let rec aux a acc =
     if a > b then acc
-    else aux (s a) (acc + f a) s
+    else aux (s a) (acc + f a) 
   in
-  aux a 0 s
+  aux a 0
   
 let sigma_terminal_predicat f a b s cont  =
   let rec aux a acc =
