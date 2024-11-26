@@ -34,7 +34,8 @@ let sigma_terminal_predicat f a b s cont =
 let sigma_terminal_generale f a b s cont g neutre =
   let rec aux a acc 
      if cont b then neutre
-     else aux (s(a)) g(acc f a)
+     else aux (s(a)) g(acc f a) 
+    in
   aux a neutre
 
 
