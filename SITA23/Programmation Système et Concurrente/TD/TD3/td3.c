@@ -48,7 +48,8 @@ int main() {
 void* tache_capteur(void* arg) {
     int id_capteur = (intptr_t)arg; // Identifiant du capteur
     char nom_fichier[20];
-    snprintf(nom_fichier, sizeof(nom_fichier), "donnees%d.txt", id_capteur); // Nom du fichier de données du capteur
+    snprintf(nom_fichier, sizeof(nom_fichier), "donnees%d.txt", id_capteur); // Nom du fichier de données 
+    //snprintf : permet de formater une chaîne de caractères et de la stocker dans un tableau de caractères
 
     FILE* fichier = fopen(nom_fichier, "r");
     if (fichier == NULL) {
@@ -58,10 +59,12 @@ void* tache_capteur(void* arg) {
 
     char valeur[LONGUEUR_MESSAGE];
     while (fgets(valeur, sizeof(valeur), fichier) != NULL) { // Lire les valeurs du fichier
+
         // Limiter la longueur de la chaîne valeur pour éviter la troncature
         valeur[strcspn(valeur, "\n")] = 0; // Supprimer le caractère de nouvelle ligne
+        //strcspn : renvoie le nombre de caractères avant le premier caractère de la chaîne qui est présent dans la chaîne de recherche
         char message[LONGUEUR_MESSAGE];
-        snprintf(message, sizeof(message), "Capteur %d : %.80s", id_capteur, valeur); // Formater le message
+        snprintf(message, sizeof(message), "Capteur %d : %.80s", id_capteur, valeur); // Message à écrire dans le journal
 
         sem_wait(&sem_vide); // Attendre un emplacement vide
         pthread_mutex_lock(&mutex_buffer); // Verrouiller le mutex
@@ -72,7 +75,8 @@ void* tache_capteur(void* arg) {
         pthread_mutex_unlock(&mutex_buffer); // Déverrouiller le mutex
         sem_post(&sem_plein); // Signaler qu'un emplacement est plein
 
-        usleep(100); // Attendre un peu avant de lire la prochaine valeur
+        usleep(100); // Attendre un peu avant de lire la prochaine valeur en microsecondes
+    
     }
 
     fclose(fichier);
