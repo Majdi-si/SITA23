@@ -1,4 +1,4 @@
-SOURCES = task.ml event.ml clique.ml main.ml
+SOURCES = task.ml event.ml clique.ml
 TARGET = maxclique
 
 OCAMLC   = ocamlc -g
