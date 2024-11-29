@@ -91,7 +91,6 @@ void* tache_capteur(void* arg) {
         sleep(1); // Attendre un peu avant de lire la prochaine valeur en secondes
     
     }
-    terminer = 1;
     fclose(fichier);
     pthread_exit(NULL);
 }
@@ -100,7 +99,7 @@ void* tache_journal(void* arg) {
     (void)arg; // Supprimer l'avertissement de paramètre inutilisé
     while (terminer == 0 ||  count > 0) {
         pthread_mutex_lock(&mutex_buffer);
-        while (count == 0) { // Attendre un emplacement plein
+        while (count == 0 && !terminer) { // Attendre un emplacement plein
             pthread_cond_wait(&cond_plein, &mutex_buffer);
         }
 
