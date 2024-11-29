@@ -27,13 +27,21 @@ void* tache_journal(void* arg);
 int main() {
     pthread_t thread_capteur1, thread_capteur2, thread_journal;
 
-    pthread_cond_init(&cond_vide, NULL); // Initialiser la condition pour les emplacements vides
-    pthread_cond_init(&cond_plein, NULL); // Initialiser la condition pour les emplacements pleins
 
     // Créer des threads pour les capteurs et le journal
     pthread_create(&thread_capteur1, NULL, tache_capteur, (void*)(intptr_t)1);
     pthread_create(&thread_capteur2, NULL, tache_capteur, (void*)(intptr_t)2);
     pthread_create(&thread_journal, NULL, tache_journal, NULL);
+
+    // Scanner l'entrée standard pour terminer le programme
+    char saisie;
+    scanf("%c", &saisie);
+    pthread_mutex_lock(&mutex_buffer);
+    terminer = 1;
+    pthread_cond_signal(&cond_plein); // Signaler au journal de terminer
+    pthread_cond_signal(&cond_vide); // Signaler aux capteurs de terminer
+    pthread_mutex_unlock(&mutex_buffer);
+
 
     // Joindre les threads (dans une application réelle, nous gérerions correctement la terminaison)
     pthread_join(thread_capteur1, NULL);
@@ -60,7 +68,7 @@ void* tache_capteur(void* arg) {
     }
 
     char valeur[LONGUEUR_MESSAGE];
-    while (fgets(valeur, sizeof(valeur), fichier) != NULL) { // Lire les valeurs du fichier
+    while ((fgets(valeur, sizeof(valeur), fichier) != NULL) && terminer == 0) {
 
         // Limiter la longueur de la chaîne valeur pour éviter la troncature
         valeur[strcspn(valeur, "\n")] = 0; // Supprimer le caractère de nouvelle ligne
@@ -80,7 +88,7 @@ void* tache_capteur(void* arg) {
         pthread_cond_signal(&cond_plein); // Signaler qu'un emplacement est plein
         pthread_mutex_unlock(&mutex_buffer);
 
-        usleep(100); // Attendre un peu avant de lire la prochaine valeur en microsecondes
+        sleep(1); // Attendre un peu avant de lire la prochaine valeur en secondes
     
     }
     terminer = 1;
