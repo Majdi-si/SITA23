@@ -53,7 +53,6 @@ void gerer_pause() {
         scanf("%d", &saisie);
         pthread_mutex_lock(&mutex_buffer);
         pause_threads = !pause_threads; // Inverser l'état de pause
-        printf("tache_main : %d\n", pause_threads);
         pthread_cond_broadcast(&cond_plein); // Réveiller tous les threads
         pthread_cond_broadcast(&cond_vide); // Réveiller tous les threads
         pthread_mutex_unlock(&mutex_buffer);
@@ -101,7 +100,6 @@ void* tache_journal(void* arg) {
     (void)arg; // Supprimer l'avertissement de paramètre inutilisé
     while (1){
         pthread_mutex_lock(&mutex_buffer);
-        printf("tache_journal : %d\n", pause_threads);
         while (count == 0 || pause_threads) { // Attendre un emplacement plein
             pthread_cond_wait(&cond_plein, &mutex_buffer);
         }
