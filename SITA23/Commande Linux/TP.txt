@@ -1,0 +1,58 @@
+TP 1 :
+
+2) grep -i "Travail"  proverbes
+
+3) export GREP_COLORS='ms=01;34' -> Cela signifie que la couleur bleue (code 34) sera appliquée aux correspondances, et 01 définit un style gras (ceci est optionnel).
+grep --color=auto -i  "Travail" proverbes
+
+4) grep -i -c "Travail"  proverbes
+
+5) grep -i  -o "Travail"  proverbes
+
+6) grep -i --color=auto  "mal"  proverbes
+-w : que le mot contenant "mal" est affiché
+
+7) grep -i -v  "le"  proverbes
+
+8) grep -E '^[[:alpha:]]{4}:' proverbes
+-> [:alpha] : prend tout les caractères alphabétiques
+-> {4} : exactement 4 lettres
+-> ':' : car le thème finit par ':'
+
+9) grep -E '\([[:alpha:]]{6}\)$' proverbes
+\( : Correspond au caractère (. Les parenthèses doivent être échappées avec un antislash \ car elles ont une signification spéciale dans les expressions régulières.
+\) : Correspond au caractère ), aussi échappé pour être traité littéralement.
+$ : Correspond à la fin de la ligne, garantissant que les parenthèses se trouvent bien à la fin.
+
+10) grep -E -w 'l(e|a)' proverbes 
+
+11) grep -E -w 'vertu(.|s)' proverbes
+-> '.' : représente n'importe quel carac
+
+12) grep -E -w --color '\bs\w+t\b' proverbes
+-> voir page 5 du cours
+
+13) grep -E -w --color '[[:lower:]]+de' proverbes
+'+' : qui a 'de' en plus
+
+14) grep -E -w --color '[[:lower:]]+ent' proverbes
+
+15) grep -E -w --color '(s|t)+[[:alpha:]]+(s|t)' proverbes
+
+16) grep -E -w --color '(s|t)+[[:alpha:]]+\1' proverbes
+-> \1 : rappeler la première parenthèse
+
+17) ls -l | grep '^d'
+-> ls -l : Affiche la liste détaillée des fichiers et répertoires dans le répertoire courant.
+-> | : Le tube (|) permet de rediriger la sortie de la commande ls -l vers la commande suivante, grep.
+-> grep '^d' : grep filtre les lignes dont le premier caractère est d, ce qui correspond aux répertoires dans la sortie de ls -l.
+
+
+
+TP 2:
+
+1) cat /etc/hostname /etc/lsb-release > info.txt
+
+2) cat -n /etc/passwd
+
+3) 

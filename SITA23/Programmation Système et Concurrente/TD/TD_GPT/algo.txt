@@ -1,0 +1,47 @@
+variable conditionnelle P_plein: dire quand P est plein
+thread chariot : 
+
+
+tache principale ()
+    tourne à l'infini
+        attendre P_plein
+            attendre (chariot)
+            fermer le bureau
+
+
+tache client ()
+    tant que le bureau est ouvert
+        attendre (client)
+        dire que le client est arrivé
+
+
+tache PersonneA ()
+    tant que le bureau est ouvert
+        attendre (client)
+        attendre (chariot)
+        si l'aire de stationnement est pleine
+            fermer le bureau
+            signaler P_plein
+        sinon 
+            ajouter un colis dans P
+    signaler (chariot)
+
+
+tache PersonneB ()
+    tant que le bureau est ouvert
+    attendre client
+        attendre (chariot)
+        si C est vide
+            attendre le livreur
+        sinon 
+            ajouter prendre un colis de C
+    signaler (chariot)
+
+tache Livreur ()
+    tant que le bureau est ouvert
+        si C est plein
+            pass
+        sinon
+            ajouter un colis dans C
+
+
