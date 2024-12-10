@@ -5,8 +5,6 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#define CLE_MEM_PARTAGEE 0x1234
-#define TAILLE_MEM_PARTAGEE sizeof(struct donnees_partagees)
 
 struct donnees_partagees {
     int champ1;
@@ -15,18 +13,24 @@ struct donnees_partagees {
 };
 
 int main() {
-    int id_mem_partagee;
     struct donnees_partagees *ptr_mem_partagee;
+    int cle, id;
+
+    /* Tirage de cle */
+
+  if ((cle=ftok("applicationTD6", 1))==-1){
+    perror("ftok");
+    exit(1);
+  }
 
     // Créer le segment de mémoire partagée
-    id_mem_partagee = shmget(CLE_MEM_PARTAGEE, TAILLE_MEM_PARTAGEE, 0666);
-    if (id_mem_partagee == -1) {
-        perror("shmget");
-        exit(EXIT_FAILURE);
-    }
+  if ((id = shmget(cle, sizeof(struct donnees_partagees), 0600|IPC_CREAT))==-1) {
+    perror("Creation memoire partagee");
+    exit(1);
+  }
 
     // Attacher le segment de mémoire partagée à notre espace d'adressage
-    ptr_mem_partagee = (struct donnees_partagees *)shmat(id_mem_partagee, NULL, 0);
+    ptr_mem_partagee = (struct donnees_partagees *)shmat(id, NULL, 0);
     if (ptr_mem_partagee == (void *)-1) {
         perror("shmat");
         exit(EXIT_FAILURE);
@@ -44,7 +48,7 @@ int main() {
     }
 
     // Supprimer le segment de mémoire partagée
-    if (shmctl(id_mem_partagee, IPC_RMID, NULL) == -1) {
+    if (shmctl(id, IPC_RMID, NULL) == -1) {
         perror("shmctl");
         exit(EXIT_FAILURE);
     }

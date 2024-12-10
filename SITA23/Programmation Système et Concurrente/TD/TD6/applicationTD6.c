@@ -1,8 +1,7 @@
 /* IPC: Memoire partagee - applicationTD5.c */
 
-
-
 #include <sys/ipc.h>
+#include <sys/types.h>
 #include <sys/shm.h>
 #include <stdio.h>
 #include <time.h>
@@ -11,7 +10,7 @@
 
 
 struct infoAppli {
-	pid_t pid;	/* le PID de l'application */
+	pid_t pid;	/* le pid du processus */
 	char message [80];	/* un texte informatif */
 	float valeur;	/* le résultat intermédiaire du calcul */
 };
@@ -53,6 +52,6 @@ int main(void) {
 	sleep(10);
  }
 
-
+  
   return 0;
 }
