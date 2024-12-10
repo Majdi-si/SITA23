@@ -55,4 +55,49 @@ TP 2:
 
 2) cat -n /etc/passwd
 
+3) Dans le cas de $ wc /etc/passwd, le nom du fichier (/etc/passwd) est inclus dans la sortie
+Dans le cas de $ wc < /etc/passwd, il n'y a pas de nom de fichier affiché à la fin de la sortie, car le fichier est envoyé à l'entrée standard et non fourni comme argument direct.
+
+4) wc -L < proverbes
+
+5) wc -m < proverbes
+
+6) wc -l < /etc/*.conf
+
+7) ls /etc/*.conf | wc -l
+
+8) cut -c -10 proverbes 
+
+9) cut -d ':' -f 2 proverbes 
+-> 2 car on garde le 2e champs
+
+10) grep -E --color '/bin/bash$' /etc/passwd | cut -d ':' -f 1,6
+
+11) sort proverbes
+
+12) sort -r proverbes 
+
+13) sort -t ':' -b -k 2 proverbes
+-> -b : ne pas prendre en compte les espaces
+-> -k 2 : 2e champs
+
+14) sort -t '(' -b -k 2 proverbes
+
+15) du /boot | sort -t ' ' -n
+
+16) grep -w -o "p[[:alpha:]]*" proverbes | uniq 
+
+17) cut -d ':' -f 7 /etc/passwd | sort | uniq -c | sort -n
+
+18) ls -l | grep '^d' | wc -l | tee /dev/pts/1
+
+
+TP 3:
+
+1) un="1" 
+
+2) deux="2" 
+export deux
+
 3) 
+
