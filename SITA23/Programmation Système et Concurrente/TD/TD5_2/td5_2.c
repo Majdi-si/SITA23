@@ -17,7 +17,7 @@ int main(void){
         }
         while ((nb = read(fd, buf, sizeof(buf))) > 0) {
             write(tube[1], buf, nb);
-            usleep(100);
+            /*usleep(100);*/
         }
         close(fd);
         close(tube[1]);
@@ -32,7 +32,7 @@ int main(void){
         }
         while ((nb = read(fd, buf, sizeof(buf))) > 0) {
             write(tube[1], buf, nb);
-            usleep(100);
+            /*usleep(100);*/
         }
         close(fd);
         close(tube[1]);
