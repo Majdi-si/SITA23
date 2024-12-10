@@ -9,7 +9,7 @@ int main(void){
     char buf[512];
     pipe(tube);
     if (pid1 = fork() == 0){
-        close(tube[0]);
+        close(tube[0]); // fermeture du descripteur de lecture
         int fd;
         if ((fd = open("donnees1.txt", O_RDONLY)) == -1) {
             perror("Erreur ouverture fichier");
