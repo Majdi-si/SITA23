@@ -39,7 +39,7 @@ int main(void){
     else{
         close(tube[1]);
         while ((nb = read(tube[0], buf, sizeof(buf))) > 0) {
-            write(1, buf, nb);
+            write(1, buf, nb); // affichage sur la sortie standard
         }
         close(tube[0]);
         exit(0);
