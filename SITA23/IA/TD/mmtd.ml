@@ -44,16 +44,14 @@ let count1=ref 0
 (*Write the recursive function that calculates the minimax of tree t*)
 let rec minimax t =
   match t with
-  |Leaf x -> x
+  |Leaf x -> incr count1; x; 
   |Nodmin l -> 
     let m = ref max_int in
     List.iter (fun x -> m:= min !m (minimax x)) l;
-    incr count1;
     !m
   |Nodmax l ->
     let m = ref (-max_int) in
     List.iter (fun x -> m:= max !m (minimax x)) l;
-    incr count1;
     !m
 
 
@@ -64,18 +62,16 @@ let count2=ref 0
 (*Write the recursive alpha-beta function applied to tree t*)
 let rec alphabeta t alpha beta =
   match t with
-  |Leaf x -> x
+  |Leaf x -> incr count2; x; 
   |Nodmin l ->
     let s = ref beta in
     (try List.iter (fun x -> s:= min !s (alphabeta x alpha !s); if !s <= alpha then raise Exit) l
     with Exit -> ());
-    incr count2;
     !s
   |Nodmax l ->
     let s = ref alpha in
     (try List.iter (fun x -> s:= max !s (alphabeta x !s beta); if !s >= beta then raise Exit) l
     with Exit -> ());
-    incr count2;
     !s
 
 
@@ -85,12 +81,11 @@ let count3=ref 0
 (*Write the recursive negamax function applied to tree t*)
 let rec negamax t alpha beta =
   match t with
-  |Leaf x -> x
+  |Leaf x -> incr count3; x; 
   |Nodmax l | Nodmin l -> 
     let s = ref alpha in 
     (try List.iter (fun x -> s:= max !s (-(negamax x (-beta) (-(!s)))); if !s >= beta then raise Exit) l
     with Exit -> ());
-  incr count3;
   !s
 
     
