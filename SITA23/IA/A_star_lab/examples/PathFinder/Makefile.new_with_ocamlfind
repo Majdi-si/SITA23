@@ -1,0 +1,55 @@
+COMPILE = ocamlfind ocamlc
+COMPILEOPT = ocamlfind ocamlopt
+CSLDEP= ocamlfind ocamldep
+#CAMLLEX=ocamllex
+#CAMLYACC=ocamlyacc
+CAMLDOC= ocamlfind ocamldoc
+
+ASTAR_PATH= ../..
+INCLUDES= -I $(ASTAR_PATH)/
+
+NORM_FILES= geo.ml problem.ml draw.ml options.ml pathfinder.ml main.ml
+NORM_OBJS =  $(NORM_FILES:.ml=.cmo)
+OPT_OBJS=  $(NORM_FILES:.ml=.cmx)
+
+LIBS= $(ASTAR_PATH)/a_star.cma
+OCAMLFINDLIBS= -package graphics,unix
+
+all : findpath findpath.norm doc
+
+doc:
+	mkdir doc;$(CAMLDOC) $(INCLUDES) -html -t "PathFinder" -d doc -intro Intro -hide Pervasives *.mli
+
+findpath.norm : $(NORM_OBJS)
+	$(COMPILE) $(INCLUDES) -o $@ $(LIBS) -linkpkg $(OCAMLFINDLIBS) $(NORM_OBJS)
+
+findpath : $(OPT_OBJS)
+	$(COMPILEOPT) $(INCLUDES) -o $@ $(LIBS:.cma=.cmxa) -linkpkg $(OCAMLFINDLIBS) $(OPT_OBJS)
+
+.SUFFIXES: .mll .mly .ml .mli .cmo .cmi .cmx
+
+.mll.mli:
+	$(CAMLLEX) $<
+.mll.ml:
+	$(CAMLLEX) $<
+.mly.mli:
+	$(CAMLYACC) $<
+.mly.ml:
+	$(CAMLYACC) $<
+.ml.cmo :
+	$(COMPILE) $(INCLUDES) -c $< $(OCAMLFINDLIBS)
+.mli.cmi :
+	$(COMPILE) $(INCLUDES) -c $< $(OCAMLFINDLIBS)
+.ml.cmx :
+	$(COMPILEOPT) $(INCLUDES) -c $< $(OCAMLFINDLIBS)
+
+cleandoc:
+	\rm -Rf doc
+
+clean:
+	\rm -f *.cmo *.cmi *.cmx *.o *.a *.cma *.cmxa .depend *~ parser.ml parser.mli lexer.ml lexer.mli findpath.norm findpath
+
+.depend:
+	$(CSLDEP) $(INCLUDES) *.mli *.ml >.depend
+
+include .depend

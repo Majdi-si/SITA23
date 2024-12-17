@@ -1,0 +1,18 @@
+
+Installation
+------------
+
+Download the source code.
+
+Go to your working directory and compile using command :
+> make
+
+This command creates two library files [a_star.cma] and [a_star.cmxa], as well as an HTML documentation that can be found in subdirectory [doc/]
+
+Usage
+-----
+
+See the html documentation in [doc/]
+
+See the example in [examples/PathFinder/]
+

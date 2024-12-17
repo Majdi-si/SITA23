@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="next" href="Pathfinder.MyAstar.html">
+<link rel="Up" href="Pathfinder.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Draw" rel="Chapter" href="Draw.html">
+<link title="Geo" rel="Chapter" href="Geo.html">
+<link title="Options" rel="Chapter" href="Options.html">
+<link title="Pathfinder" rel="Chapter" href="Pathfinder.html">
+<link title="Problem" rel="Chapter" href="Problem.html"><title>PathFinder : Pathfinder.MyModel</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="Pathfinder.html" title="Pathfinder">Up</a>
+&nbsp;<a class="post" href="Pathfinder.MyAstar.html" title="Pathfinder.MyAstar">Next</a>
+</div>
+<h1>Module <a href="type_Pathfinder.MyModel.html">Pathfinder.MyModel</a></h1>
+
+<pre><span class="keyword">module</span> MyModel: <code class="code">sig</code> <a href="Pathfinder.MyModel.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><span id="TYPEstate"><span class="keyword">type</span> <code class="type"></code>state</span> = <code class="type"><a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a></code> </pre>
+
+
+<pre><span id="TYPEuser_param"><span class="keyword">type</span> <code class="type"></code>user_param</span> = <code class="type"><a href="Draw.html#TYPEgraph">Draw.graph</a> * <a href="Problem.html#TYPEproblem">Problem.problem</a></code> </pre>
+
+
+<pre><span id="VALinitial_state"><span class="keyword">val</span> initial_state</span> : <code class="type"><a href="Pathfinder.MyModel.html#TYPEuser_param">user_param</a> -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a></code></pre>
+<pre><span id="VALis_goal"><span class="keyword">val</span> is_goal</span> : <code class="type"><a href="Pathfinder.MyModel.html#TYPEuser_param">user_param</a> -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> -> bool</code></pre>
+<pre><span id="VALk"><span class="keyword">val</span> k</span> : <code class="type"><a href="Pathfinder.MyModel.html#TYPEuser_param">user_param</a> -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> -> float</code></pre>
+<pre><span id="VALh"><span class="keyword">val</span> h</span> : <code class="type"><a href="Pathfinder.MyModel.html#TYPEuser_param">user_param</a> -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> -> float</code></pre>
+<pre><span id="VALnext"><span class="keyword">val</span> next</span> : <code class="type"><a href="Pathfinder.MyModel.html#TYPEuser_param">user_param</a> -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> list</code></pre>
+<pre><span id="VALdo_at_insertion"><span class="keyword">val</span> do_at_insertion</span> : <code class="type"><a href="Pathfinder.MyModel.html#TYPEuser_param">user_param</a> -> 'b -> 'c -> unit</code></pre>
+<pre><span id="VALdo_at_extraction"><span class="keyword">val</span> do_at_extraction</span> : <code class="type"><a href="Pathfinder.MyModel.html#TYPEuser_param">user_param</a> -><br>       (float, <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a>) Pqueue.t -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> Memory.t -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> -> unit</code></pre></body></html>

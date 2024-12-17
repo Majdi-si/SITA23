@@ -1,0 +1,35 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Draw" rel="Chapter" href="Draw.html">
+<link title="Geo" rel="Chapter" href="Geo.html">
+<link title="Options" rel="Chapter" href="Options.html">
+<link title="Pathfinder" rel="Chapter" href="Pathfinder.html">
+<link title="Problem" rel="Chapter" href="Problem.html"><title>PathFinder : Geo</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">P2D</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;{&nbsp;x&nbsp;:&nbsp;float;&nbsp;y&nbsp;:&nbsp;float;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fprint&nbsp;:&nbsp;<span class="constructor">Pervasives</span>.out_channel&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;distance&nbsp;:&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Rectangle</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;{&nbsp;ll&nbsp;:&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t;&nbsp;ur&nbsp;:&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;inside&nbsp;:&nbsp;<span class="constructor">Geo</span>.<span class="constructor">Rectangle</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Circle</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;{&nbsp;center&nbsp;:&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t;&nbsp;radius&nbsp;:&nbsp;float;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;inside&nbsp;:&nbsp;<span class="constructor">Geo</span>.<span class="constructor">Circle</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
+<span class="keyword">end</span></code></body></html>

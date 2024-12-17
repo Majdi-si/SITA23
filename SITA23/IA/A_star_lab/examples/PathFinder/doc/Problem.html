@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Pathfinder.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Draw" rel="Chapter" href="Draw.html">
+<link title="Geo" rel="Chapter" href="Geo.html">
+<link title="Options" rel="Chapter" href="Options.html">
+<link title="Pathfinder" rel="Chapter" href="Pathfinder.html">
+<link title="Problem" rel="Chapter" href="Problem.html"><title>PathFinder : Problem</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Pathfinder.html" title="Pathfinder">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Problem.html">Problem</a></h1>
+
+<pre><span class="keyword">module</span> Problem: <code class="code">sig</code> <a href="Problem.html">..</a> <code class="code">end</code></pre><div class="info module top">
+A path-finding problem, with obstacles between origin and destination.<br>
+</div>
+<hr width="100%">
+
+<pre><code><span id="TYPEobstacle"><span class="keyword">type</span> <code class="type"></code>obstacle</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTobstacle.R"><span class="constructor">R</span></span> <span class="keyword">of</span> <code class="type"><a href="Geo.Rectangle.html#TYPEt">Geo.Rectangle.t</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTobstacle.C"><span class="constructor">C</span></span> <span class="keyword">of</span> <code class="type"><a href="Geo.Circle.html#TYPEt">Geo.Circle.t</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEproblem"><span class="keyword">type</span> <code class="type"></code>problem</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTproblem.xmin">xmin</span>&nbsp;: <code class="type">float</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTproblem.xmax">xmax</span>&nbsp;: <code class="type">float</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTproblem.ymin">ymin</span>&nbsp;: <code class="type">float</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTproblem.ymax">ymax</span>&nbsp;: <code class="type">float</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTproblem.orig">orig</span>&nbsp;: <code class="type"><a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Point of departure<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTproblem.dest">dest</span>&nbsp;: <code class="type"><a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Destination<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTproblem.obstacles">obstacles</span>&nbsp;: <code class="type"><a href="Problem.html#TYPEobstacle">obstacle</a> list</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type"><a href="Problem.html#TYPEproblem">problem</a> -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> list -> unit</code></pre>
+<pre><span id="VALinside_domain"><span class="keyword">val</span> inside_domain</span> : <code class="type"><a href="Problem.html#TYPEproblem">problem</a> -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> -> bool</code></pre><div class="info ">
+<code class="code">inside_domain pb p</code> returns <code class="code">true</code> if point <code class="code">p</code> is inside
+    the domain defined in problem <code class="code">pb</code>, and <code class="code">false</code> otherwise<br>
+</div>
+
+<pre><span id="VALoutside_obstacles"><span class="keyword">val</span> outside_obstacles</span> : <code class="type"><a href="Problem.html#TYPEproblem">problem</a> -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> -> bool</code></pre><div class="info ">
+<code class="code">outsided_obstacles pb p</code> returns <code class="code">true</code> if point <code class="code">p</code> is outside
+    the obstacles defined in problem <code class="code">pb</code>, and <code class="code">false</code> otherwise<br>
+</div>
+
+<pre><span id="VALcheck_constraints"><span class="keyword">val</span> check_constraints</span> : <code class="type"><a href="Problem.html#TYPEproblem">problem</a> -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> list -> <a href="Geo.P2D.html#TYPEt">Geo.P2D.t</a> list</code></pre><div class="info ">
+<code class="code">check_constraints pb points</code> filters the list <code class="code">points</code> and returns
+    only the points inside the domain and outside the obstacles defined
+    in problem <code class="code">pb</code>.<br>
+</div>
+
+<pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">unit -> <a href="Problem.html#TYPEproblem">problem</a></code></pre><div class="info ">
+<code class="code">init_problem ()</code> returns a path-finding problem.<br>
+</div>
+</body></html>

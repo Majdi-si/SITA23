@@ -1,0 +1,70 @@
+COMPILE = ocamlc
+COMPILEOPT = ocamlopt	
+CSLDEP=ocamldep
+CAMLLEX=ocamllex
+CAMLYACC=ocamlyacc
+CAMLDOC= ocamldoc
+
+INCLUDES  = # -I ...
+
+NORM_FILES= pqueue.ml memory.ml a_star.ml
+NORM_OBJS =  $(NORM_FILES:.ml=.cmo)
+OPT_OBJS=  $(NORM_FILES:.ml=.cmx)
+
+PACKAGENAME = a_star
+
+LIBS=  #graphics.cma unix.cma #$(GEOM_PATH)/geo.cma
+LIBS_OPT=  $(LIBS:.cma=.cmxa)
+
+all : a_star.cma a_star.cmxa doc
+
+install:
+	ocamlfind install $(PACKAGENAME) META *.cm* *.a
+
+remove:
+	ocamlfind remove $(PACKAGENAME)	
+
+doc:
+	mkdir doc;$(CAMLDOC) -html -t "A_star" -d doc -intro Intro -hide Pervasives *.mli
+
+libs: a_star.cma a_star.cmxa
+
+a_star.cma: $(NORM_OBJS) 
+	$(COMPILE) $(INCLUDES) -a -o $@ $(NORM_OBJS)
+
+a_star.cmxa : $(OPT_OBJS) 
+	$(COMPILEOPT) $(INCLUDES) -a -o $@ $(OPT_OBJS)
+
+.SUFFIXES: .mll .mly .ml .mli .cmo .cmi .cmx
+
+.mll.mli:
+	$(CAMLLEX) $<
+
+.mll.ml:
+	$(CAMLLEX) $<
+
+.mly.mli:
+	$(CAMLYACC) $<
+
+.mly.ml:
+	$(CAMLYACC) $<
+
+.ml.cmo :
+	$(COMPILE) $(INCLUDES) -c $<
+
+.mli.cmi :
+	$(COMPILE) -c $<
+
+.ml.cmx :
+	$(COMPILEOPT) $(INCLUDES) -c $<
+
+cleandoc:
+	\rm -Rf doc
+
+clean:
+	\rm -f *.cmo *.cmi *.cmx *.o *.a *.cma *.cmxa .depend *~ parser.ml parser.mli lexer.ml lexer.mli
+
+.depend:
+	$(CSLDEP) $(INCLUDES) *.mli *.ml >.depend
+
+include .depend

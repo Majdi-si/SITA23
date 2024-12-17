@@ -1,0 +1,33 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Draw" rel="Chapter" href="Draw.html">
+<link title="Geo" rel="Chapter" href="Geo.html">
+<link title="Options" rel="Chapter" href="Options.html">
+<link title="Pathfinder" rel="Chapter" href="Pathfinder.html">
+<link title="Problem" rel="Chapter" href="Problem.html"><title>PathFinder : Problem</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;obstacle&nbsp;=&nbsp;<span class="constructor">R</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Geo</span>.<span class="constructor">Rectangle</span>.t&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">C</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Geo</span>.<span class="constructor">Circle</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;problem&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xmin&nbsp;:&nbsp;float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xmax&nbsp;:&nbsp;float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ymin&nbsp;:&nbsp;float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ymax&nbsp;:&nbsp;float;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;orig&nbsp;:&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dest&nbsp;:&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;obstacles&nbsp;:&nbsp;<span class="constructor">Problem</span>.obstacle&nbsp;list;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;print&nbsp;:&nbsp;<span class="constructor">Problem</span>.problem&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;inside_domain&nbsp;:&nbsp;<span class="constructor">Problem</span>.problem&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;outside_obstacles&nbsp;:&nbsp;<span class="constructor">Problem</span>.problem&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;check_constraints&nbsp;:&nbsp;<span class="constructor">Problem</span>.problem&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Geo</span>.<span class="constructor">P2D</span>.t&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;init&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Problem</span>.problem<br>
+<span class="keyword">end</span></code></body></html>

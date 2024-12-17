@@ -1,0 +1,19 @@
+geo.cmo : geo.cmi
+geo.cmx : geo.cmi
+geo.cmi :
+main.cmo : problem.cmi pathfinder.cmi options.cmi
+main.cmx : problem.cmx pathfinder.cmx options.cmx
+options.cmo : options.cmi
+options.cmx : options.cmi
+options.cmi :
+pathfinder.cmo : problem.cmi geo.cmi ../../a_star.cmi pathfinder.cmi
+pathfinder.cmx : problem.cmx geo.cmx ../../a_star.cmx pathfinder.cmi
+pathfinder.cmi : problem.cmi ../../pqueue.cmi ../../memory.cmi geo.cmi \
+    ../../a_star.cmi
+pathfinder_a_faire.cmo : problem.cmi geo.cmi ../../a_star.cmi
+pathfinder_a_faire.cmx : problem.cmx geo.cmx ../../a_star.cmx
+pathfinder_correction.cmo : problem.cmi geo.cmi ../../a_star.cmi
+pathfinder_correction.cmx : problem.cmx geo.cmx ../../a_star.cmx
+problem.cmo : geo.cmi problem.cmi
+problem.cmx : geo.cmx problem.cmi
+problem.cmi : geo.cmi

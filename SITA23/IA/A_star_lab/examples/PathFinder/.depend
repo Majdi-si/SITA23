@@ -1,0 +1,64 @@
+draw.cmo : \
+    problem.cmi \
+    geo.cmi \
+    draw.cmi
+draw.cmx : \
+    problem.cmx \
+    geo.cmx \
+    draw.cmi
+draw.cmi : \
+    problem.cmi \
+    geo.cmi
+geo.cmo : \
+    geo.cmi
+geo.cmx : \
+    geo.cmi
+geo.cmi :
+main.cmo : \
+    problem.cmi \
+    pathfinder.cmi \
+    options.cmi \
+    draw.cmi
+main.cmx : \
+    problem.cmx \
+    pathfinder.cmx \
+    options.cmx \
+    draw.cmx
+options.cmo : \
+    options.cmi
+options.cmx : \
+    options.cmi
+options.cmi :
+pathfinder.cmo : \
+    problem.cmi \
+    ../../pqueue.cmi \
+    options.cmi \
+    ../../memory.cmi \
+    geo.cmi \
+    draw.cmi \
+    ../../a_star.cmi \
+    pathfinder.cmi
+pathfinder.cmx : \
+    problem.cmx \
+    ../../pqueue.cmx \
+    options.cmx \
+    ../../memory.cmx \
+    geo.cmx \
+    draw.cmx \
+    ../../a_star.cmx \
+    pathfinder.cmi
+pathfinder.cmi : \
+    problem.cmi \
+    ../../pqueue.cmi \
+    ../../memory.cmi \
+    geo.cmi \
+    draw.cmi \
+    ../../a_star.cmi
+problem.cmo : \
+    geo.cmi \
+    problem.cmi
+problem.cmx : \
+    geo.cmx \
+    problem.cmi
+problem.cmi : \
+    geo.cmi
