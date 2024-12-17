@@ -27,36 +27,35 @@ exception Eureka
       
 let search user_fun u0 is_goal next k h =
   (* Initialize the priority queue and the memory table *)
-  let cost0= 0. in
-  let f0= cost0 +. h u0 in
-  let m= Memory.init u0 cost0 in
-  let q= ref (Pqueue.insert f0 u0 Pqueue.empty) in
+  let cost0 = 0. in
+  let f0 = cost0 +. h u0 in
+  let m = Memory.init u0 cost0 in
+  let q = ref (Pqueue.insert f0 u0 Pqueue.empty) in
   let path = ref [] in
   try
     while not (Pqueue.is_empty !q) do
-      let (_prio,u,new_q)= Pqueue.extract !q in
+      let (_prio, u, new_q) = Pqueue.extract !q in
       user_fun.do_at_extraction !q m u;
-      q := !q - u;
+      q := new_q; (* Update the priority queue *)
       if is_goal u then begin
-        path := Memory.reconstruct_path m u;  
+        path := Memory.get_path m u;
         raise Eureka
       end;
-    if Memory.is_not_visited m u then begin
-      Memory.mark_as_visited m u;
-      List.iter (fun v ->
-          let cost= Memory.get_cost m u +. k u v in
-          let f= cost +. h v in
-          if Memory.is_not_visited m v then begin
+      if not (Memory.already_expanded m u) then begin
+        Memory.tag_as_expanded m u;
+        List.iter (fun v ->
+          let cost = Memory.get_cost m u +. k u v in
+          let f = cost +. h v in
+          if not (Memory.mem m v) then begin
             user_fun.do_at_insertion u v;
             q := Pqueue.insert f v !q;
-            Memory.update m v cost u
-          end
-          else if Memory.get_cost m v > cost then begin
+            Memory.store_state m v cost u
+          end else if Memory.get_cost m v > cost then begin
             user_fun.do_at_insertion u v;
             q := Pqueue.insert f v !q;
-            Memory.update m v cost u)
-        (next u)
-        
+            Memory.store_state m v cost u
+          end)
+          (next u)
       end;
     done;
     failwith "Unreachable"
