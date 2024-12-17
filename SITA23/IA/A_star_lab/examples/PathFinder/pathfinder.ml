@@ -34,7 +34,7 @@ module MyModel = struct
     let open Geo.P2D in
     let dx = u.x -. pb.Problem.dest.x in
     let dy = u.y -. pb.Problem.dest.y in
-    sqrt (dx *. dx +. dy *. dy)
+    2. *. sqrt (dx *. dx +. dy *. dy)
 
   let check_constraints pb v =
     Problem.inside_domain pb v && Problem.outside_obstacles pb v
@@ -47,14 +47,7 @@ module MyModel = struct
     in
     List.iter add [(1., 0.); (0., 1.); (-1., 0.); (0., -1.); (1., 1.); (1., -1.); (-1., 1.); (-1., -1.)];
     !l
-  let next (_,pb) {Geo.P2D.x=x; y} = 
-    let l = ref [] in
-    let add (dx, dy) =
-      let v = { Geo.P2D.x = x +. dx; y = y +. dy } in
-      if check_constraints pb v then l := v :: !l
-    in
-    List.iter add [(1., 0.); (0., 1.); (-1., 0.); (0., -1.); (1., 1.); (1., -1.); (-1., 1.); (-1., -1.)];
-    !l
+
   (* !!!!!!   FIN DE LA PARTIE A MODIFIER !!!!!! *)
       
   let do_at_insertion _pb _ _ = ()
