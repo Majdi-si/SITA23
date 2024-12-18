@@ -39,7 +39,7 @@ int main() {
     }
 
     memcpy(&(sin.sin_addr.s_addr), host->h_addr_list[0], sizeof(unsigned long));
-    //sin.sin_addr.s_addr = inet_addr("192.168.193.9");  // en loopback pour test
+    sin.sin_addr.s_addr = inet_addr("192.168.193.209");  // en loopback pour test
     sin.sin_family = AF_INET;
     sin.sin_port = htons(9999); // port 9999
 
