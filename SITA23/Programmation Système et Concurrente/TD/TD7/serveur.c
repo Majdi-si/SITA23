@@ -1,83 +1,72 @@
 #include <stdio.h>
-#include <sys/socket.h>
-#include <sys/param.h>
-#include <sys/un.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
 
-/**********************************************************************
-		Exemple code serveur socket
+int main() {
+    int sock, client_sock;
+    struct sockaddr_in sin, client_sin;
+    socklen_t client_sin_len = sizeof(client_sin);
+    char buffer[1024];
+    int received;
 
-**********************************************************************/
+    // Création de la socket
+    if ((sock = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+        perror("erreur socket()");
+        exit(0);
+    }
 
-#define BUF_SIZE 20
+    // Configuration de l'adresse du serveur
+    sin.sin_family = AF_INET;
+    sin.sin_addr.s_addr = INADDR_ANY;
+    sin.sin_port = htons(9999);
 
-int main (void) {
+    // Liaison de la socket à l'adresse du serveur
+    if (bind(sock, (struct sockaddr*)&sin, sizeof(sin)) == -1) {
+        perror("erreur bind()");
+        close(sock);
+        exit(0);
+    }
 
-	int sock, csock;
-	struct sockaddr_in sin, csin;
-	int nbRecus;
-	socklen_t taille;
-	char buf [BUF_SIZE];
+    // Mise en écoute des connexions entrantes
+    if (listen(sock, 5) == -1) {
+        perror("erreur listen()");
+        close(sock);
+        exit(0);
+    }
 
+    printf("Serveur en attente de connexion sur le port 9999...\n");
 
-	// Creation de la socket d ecoute
+    while (1) {
+        // Acceptation d'une connexion entrante
+        if ((client_sock = accept(sock, (struct sockaddr*)&client_sin, &client_sin_len)) == -1) {
+            perror("erreur accept()");
+            close(sock);
+            exit(0);
+        }
 
-	if ((sock = socket(AF_INET, SOCK_STREAM, 0))==-1) {
-		perror("erreur socket()");
-		exit(0);
-	}
+        printf("Connexion acceptée\n");
 
-	// attachement de la socket (toute connexions entrantes acceptees, ecoute sur le port 9999)
+        // Lecture des données envoyées par le client
+        while ((received = recv(client_sock, buffer, sizeof(buffer) - 1, 0)) > 0) {
+            buffer[received] = '\0';
+            printf("Reçu: %s\n", buffer);
+        }
 
-	sin.sin_addr.s_addr = INADDR_ANY;
-	sin.sin_family = AF_INET;
-	sin.sin_port = htons(9999); /* port 9999 */
+        if (received == -1) {
+            perror("erreur recv()");
+        } else {
+            printf("Connexion fermée par le client\n");
+        }
 
-	if (bind(sock, (struct sockaddr *)&sin, sizeof(sin)) == -1) {
-		perror("erreur bind()");
-		close(sock);
-		exit(0);
-	}
+        // Fermeture de la socket client
+        close(client_sock);
+    }
 
-	// sock devient une socket d'écoute, une seule connexion a la fois
+    // Fermeture de la socket serveur
+    close(sock);
 
-	if (listen(sock, 1)!=0) {
-		perror("erreur listen()");
-		close(sock);
-		exit(0);
-	}
-
-	while(1) { // serveur en boucle infinie d'attente de connexions client : traite un client après l'autre
-	
-		taille = sizeof(csin);
-
-		// attente d une connexion client
-
-		if ((csock=accept(sock, (struct sockaddr *)&csin, &taille)) == -1){
-			perror("erreur accept()");
-			close(sock);
-			exit(0);
-		}
-
-		// lecture des informations recues (sur csock)
-
-		if ((nbRecus=recv(csock, buf, BUF_SIZE, 0))<=0){
-			perror("erreur recv()");
-			close(sock);
-			exit(0);
-		}
-
-		// affichage des informations recues
-
-		write(1, buf, nbRecus);
-		
-	} // fin while 1
-
-	return 0;
-
+    return 0;
 }
-/*-------------------------------------------------------------------------------------*/
