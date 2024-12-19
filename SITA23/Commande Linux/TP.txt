@@ -94,9 +94,9 @@ Dans le cas de $ wc < /etc/passwd, il n'y a pas de nom de fichier affiché à la
 
 TP 3:
 
-1) un="1" 
+1) un=1 
 
-2) deux="2" 
+2) deux=2 
 export deux
 
 3) 

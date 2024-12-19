@@ -1,5 +1,4 @@
-#!/bin/bash
-echo Script : $0
-echo Parametres : $3 $1 $2
-echo Nombre de parametres : $#
-
+ #!/bin/bash
+trois=3
+echo $un $deux $trois
+deux=22
